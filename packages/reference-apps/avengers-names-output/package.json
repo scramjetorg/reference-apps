@@ -1,8 +1,11 @@
 {
-  "name": "@scramjet/multi-outputs",
+  "name": "@scramjet/avengers-names-output",
   "version": "0.12.1",
   "description": "",
   "main": "index.js",
+  "assets": [
+    "avengers.json"
+  ],
   "scripts": {
     "build:refapps": "tsc -p tsconfig.json",
     "postbuild:refapps": "yarn prepack",
@@ -18,6 +21,10 @@
   },
   "scramjet": {
     "image": "node"
+  },
+  "dependencies": {
+    "JSONStream": "^1.3.5",
+    "scramjet": "^4.36.0"
   },
   "repository": {
     "type": "git",
