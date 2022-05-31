@@ -9,7 +9,7 @@ Sequence downloads following files every second:
 
 build everything:
 ```
-yarn install && yarn build && yarn prepack
+yarn install && yarn build
 ```
 
 ## Run test

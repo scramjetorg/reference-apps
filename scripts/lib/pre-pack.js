@@ -1,45 +1,47 @@
 const fse = require("fs-extra");
 const glob = require("glob");
 const path = require("path");
-const { exec } = require("child_process");
 const { promises: { access }, constants } = require("fs");
 const { chmod, readFile, writeFile } = require("fs/promises");
+const { runCommand, exists } = require("./build-utils");
+const { join } = require("path");
 
 class PrePack {
     LICENSE_FILENAME = "LICENSE";
-    PACKAGES_DIR = process.env.PACKAGES_DIR || "packages";
 
     constructor(options) {
+        this.logs = [];
         this.options = options || {};
 
         if (!this.options.outDir) {
             throw new Error("No output folder specified");
         }
 
-        this.currDir = process.cwd();
-        this.rootDir = path.resolve(__dirname, "../..");
+        this.packagesDir = options.packagesDir || "packages";
+        this.currDir = options.cwd || process.cwd();
+        this.rootDir = options.rootDir || path.resolve(__dirname, "../..");
         this.currDirDist = path.join(this.currDir, "dist");
 
-        if (this.options.localCopy) {
-            this.rootDistPackPath = this.currDirDist;
-        } else {
-            this.rootDistPackPath = this.currDir.replace(this.PACKAGES_DIR, this.options.outDir);
-        }
+        const packageDirName = this.currDir.split("/").pop();
 
         if (this.options.distPackDir) {
-            this.rootDistPackPath = this.options.distPackDir + "/" + this.currDir.split("/").pop();
+            this.rootDistPackPath = join(this.options.distPackDir, packageDirName);
+        } else if (this.options.rootDistPack) {
+            this.rootDistPackPath = this.options.rootDistPack;
+        } else if (this.options.localCopy) {
+            this.rootDistPackPath = this.currDirDist;
+        } else {
+            this.rootDistPackPath = join(this.currDirDist, packageDirName);
         }
 
         this.rootPackageJson = null;
         this.currPackageJson = null;
         this.packagesMap = null;
+    }
 
-        console.log(this.options, {
-            currDir: this.currDir,
-            rootDir: this.rootDir,
-            currDirDist: this.currDirDist,
-            rootDistPackPath: this.rootDistPackPath
-        });
+    log(...txt) {
+        this.logs.push(txt);
+        (this.options.log || console.error)(...txt);
     }
 
     async build() {
@@ -50,13 +52,12 @@ class PrePack {
                     throw new Error("Package has no name!");
 
                 this.rootDistPackPath = path.join(this.rootDir, "dist", this.currPackageJson.name.replace(/[^\w\d]+/g, "-").replace(/^\-|\-$/, ""));
-                console.log(this.rootDistPackPath);
             }
 
             await this.readRootPackage();
             await this.makePackagesMap();
 
-            if (!this.options.localCopy) {
+            if (await exists(this.currDirDist) && !this.options.localCopy) {
                 await this.copyFiles();
             }
 
@@ -67,9 +68,9 @@ class PrePack {
             if (!this.options.noInstall) {
                 await this.install();
             }
-        } catch (message) {
-            console.error(message);
-            process.exitCode = 1;
+        } catch (err) {
+            this.log(err);
+            throw err;
         }
     }
 
@@ -77,7 +78,7 @@ class PrePack {
      * @returns {string[]} found package paths
      */
     async findPackages() {
-        const cwd = path.join(this.rootDir, this.PACKAGES_DIR);
+        const cwd = path.join(this.rootDir, this.packagesDir);
 
         return new Promise((res, rej) => {
             glob("!(node_modules)/package.json", { cwd }, (err, packages) => {
@@ -137,12 +138,8 @@ class PrePack {
         ));
     }
 
-    async install() {
-        return new Promise((res, rej) =>
-            exec(`cd ${this.rootDistPackPath} && npm i`)
-                .on("exit", (err) => err ? rej(err) : res())
-                .stderr.pipe(process.stderr)
-        );
+    async install(extraParams = "", verbose = false) {
+        return runCommand(`cd ${this.rootDistPackPath} && npx -y npm@8 install${extraParams}`, verbose);
     }
 
     async isReadable(file) {
@@ -178,7 +175,7 @@ class PrePack {
     }
 
     async copy(input, output) {
-        console.log(`Copy files from ${input} to ${output}`);
+        this.log(`Copy files from ${input} to ${output}`);
 
         return fse.copy(input, output, { recursive: true })
             .catch(err => {
@@ -233,7 +230,7 @@ class PrePack {
         } = content;
         const priv = !this.options.public && this.rootPackageJson.private;
         const srcRe = (str, rp = ".js") => str.replace(/^(?:\.\/)?src\//, "./").replace(/.ts$/, rp);
-        const main = srcRe(_main);
+        const main = _main && srcRe(_main);
         const browser = _browser && srcRe(_browser);
         const bin = _bin && (typeof _bin === "string"
             ? srcRe(_bin)
@@ -273,7 +270,7 @@ class PrePack {
 
                 if (!contents.match(/^\s*#!\/usr\/bin\/env ts-node/)) return;
 
-                console.log(`Replacing shebang in ${file}`);
+                this.log(`Replacing shebang in ${file}`);
                 await writeFile(file, contents.replace(/^\s*#!\/usr\/bin\/env ts-node/, "#!/usr/bin/env node"));
                 await chmod(file, 0o755);
             }
@@ -281,7 +278,7 @@ class PrePack {
     }
 
     async savePkgJson(content) {
-        console.log(`Add package.json to ${this.rootDistPackPath}`);
+        this.log(`Add package.json to ${this.rootDistPackPath}`);
 
         return fse.outputJSON(path.join(this.rootDistPackPath, "package.json"), content, { spaces: 2 })
             .catch(err => {
