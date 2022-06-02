@@ -1,5 +1,5 @@
 requires = {
-   'requires': 'pytopic-test',
+   'requires': 'topic-test',
    'contentType': 'text/plain'
 }
 

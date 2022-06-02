@@ -1,5 +1,5 @@
 provides = {
-   'provides': 'pytopic-test',
+   'provides': 'topic-test',
    'contentType': 'text/plain'
 }
 
