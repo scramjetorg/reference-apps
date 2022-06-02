@@ -19,21 +19,17 @@ jobs:
       - name: Build reference apps
         run: yarn build:refapps
 
-      - name: Create a release and upload artifacts
+      - name: Prefix python packages to prevent name clash
         run: |
-          cd js;
-          for pkg in *.tar.gz; do
-            mv $pkg ../js-$pkg;
-          done
-          cd ..;
           cd python;
           for pkg in *.tar.gz; do
-            mv $pkg ../py-$pkg;
+            mv $pkg python-$pkg;
           done
-        env:
-          GITHUB_TOKEN: ${{ secrets.SCRAMJET_BOT_TOKEN }}
 
       - name: Create a release and upload artifacts
-        run: gh release create ${{ github.ref }} *.tar.gz
+        run: >
+          gh release create ${{ github.ref }}
+          js/*.tar.gz
+          python/*.tar.gz
         env:
           GITHUB_TOKEN: ${{ secrets.SCRAMJET_BOT_TOKEN }}
