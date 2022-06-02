@@ -25,6 +25,7 @@ jobs:
           for pkg in *.tar.gz; do
             mv $pkg ../js-$pkg;
           done
+          cd ..;
           cd python;
           for pkg in *.tar.gz; do
             mv $pkg ../py-$pkg;
