@@ -25,7 +25,7 @@ export = async function(_stream, max = 10) {
 
         cnt++;
 
-        if (max && cnt > max) {
+        if (cnt > max) {
             clearInterval(interval);
             ps.end();
         }
