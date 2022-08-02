@@ -16,6 +16,9 @@
     "@scramjet/types": "^0.22.0",
     "@types/node": "15.12.5"
   },
+  "assets": [
+    "numbers.txt"
+  ],
   "dependencies": {
     "scramjet": "^4.36.6"
   },
