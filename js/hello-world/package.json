@@ -10,9 +10,15 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/scramjetorg/transform-hub.git"
+    "url": "https://github.com/scramjetorg/reference-apps.git"
   },
   "engines": {
     "node": "^16.0.0"
+    
+  },
+  "scripts": {
+    "build:refapps": "yarn packseq",
+    "clean": "rm -rf ./dist .bic_cache",
+    "packseq": "PACKAGES_DIR=js node ../../scripts/packsequence.js"
   }
 }
