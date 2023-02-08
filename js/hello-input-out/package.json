@@ -10,7 +10,7 @@
     "packseq": "PACKAGES_DIR=js node ../../scripts/packsequence.js"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=14"
   },
   "scramjet": {
     "image": "node"
