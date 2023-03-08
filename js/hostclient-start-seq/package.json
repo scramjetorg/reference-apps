@@ -10,7 +10,7 @@
         "url": "https://github.com/scramjetorg/transform-hub.git"
     },
     "engines": {
-        "node": "^16.0.0"
+        "node": ">=14"
     },
     "scripts": {
         "build:refapps": "yarn build:refapps:only",
