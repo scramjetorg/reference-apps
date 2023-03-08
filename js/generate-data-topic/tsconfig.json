@@ -1,12 +1,15 @@
 {
-    "compilerOptions": {
-      "lib": [ "ESNext" ],
-      "target": "ESNext",
-      "module": "CommonJS",
-      "outDir": "./dist",
-      "esModuleInterop": true,
-      "skipLibCheck": true,
-      "resolveJsonModule": true
-    }
-    
+  "compilerOptions": {
+    "outDir": "./dist"
+  },
+  "extends": "../../tsconfig.base.json",
+  "include": [
+    "./index.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "typedocOptions": {
+    "gitRevision": "HEAD"
+  }
 }
