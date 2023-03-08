@@ -1,0 +1,17 @@
+{
+  "name": "km-test",
+  "version": "1.0.0",
+  "description": "Sending 128bytes of data to topic ",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "postbuild": "cp -r package.json dist/ && (cd dist && npm i --omit=dev)",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Piotr",
+  "license": "ISC",
+  "dependencies": {
+    "@scramjet/types": "^0.33.1",
+    "object-sizeof": "^2.6.1"
+  }
+}
