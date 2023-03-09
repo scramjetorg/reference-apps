@@ -8,7 +8,7 @@ const exp: (TransformApp | { provides: string, contentType: string})[] = [
         const out = new PassThrough();
 
         async function * generate() {
-            const startTime = new Date().getTime();
+            const startTime = Date.now();
             const endTime = startTime + executionTime;
             const durationInMs = endTime - startTime;
             const duration = new Date(durationInMs).toISOString().substr(11, 8);
