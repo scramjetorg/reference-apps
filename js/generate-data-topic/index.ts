@@ -13,7 +13,7 @@ const exp: (TransformApp | { provides: string, contentType: string})[] = [
             const durationInMs = endTime - startTime;
             const duration = new Date(durationInMs).toISOString().substr(11, 8);
 
-            while (new Date().getTime() < endTime) {
+            while (Date.now() < endTime) {
                 yield Buffer.from(
                     Buffer.concat([
                         Buffer.from(Date.now().toString()), randomBytes(115)
