@@ -31,7 +31,7 @@ const exp: (TransformApp | { provides: string, contentType: string})[] = [
 
             readable.pipe(out);
         });
-        return Object.assign(out, { topic: "topic-test", contentType: "text/plain" });
+        return Object.assign(out, { topic: "topic-test", contentType: "application/octet-stream" });
     }
 ];
 
