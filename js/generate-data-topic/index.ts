@@ -25,12 +25,11 @@ const exp: (TransformApp | { provides: string, contentType: string})[] = [
             console.log(`End time: ${new Date(endTime).toISOString().substr(11,8)}`);
             console.log(`Duration time: ${duration}`);
         }
-        this.on("new-test-start", async () =>
-        {
-            const readable = Readable.from(generate());
 
-            readable.pipe(out);
+        this.on("new-test-start", () => {
+            Readable.from(generate()).pipe(out);
         });
+        
         return Object.assign(out, { topic: "topic-test", contentType: "application/octet-stream" });
     }
 ];
