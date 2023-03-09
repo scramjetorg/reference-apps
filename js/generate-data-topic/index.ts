@@ -14,7 +14,6 @@ const exp: (TransformApp | { provides: string, contentType: string})[] = [
             const duration = new Date(durationInMs).toISOString().substr(11, 8);
 
             while (new Date().getTime() < endTime) {
-                // eslint-disable-next-line no-console
                 yield Buffer.from(
                     Buffer.concat([
                         Buffer.from(Date.now().toString()), randomBytes(115)
