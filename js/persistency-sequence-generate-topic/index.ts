@@ -11,14 +11,14 @@ const exp: (TransformApp | { provides: string; contentType: string })[] = [
 
         async function* gen() {
             let a = 0;
-
+            let tempDataAmount = dataAmount;
             const startTime = Date.now();
             
             console.log(`Generating ${dataSize} bytes every ${intervalDelay}ms ...`);
 
-            while (dataAmount >= dataSize) {
+            while (tempDataAmount >= dataSize) {
                 a++;
-                dataAmount -= dataSize;
+                tempDataAmount -= dataSize;
 
                 yield Buffer.concat([Buffer.from(new Uint32Array([a])), randomBytes(dataSize - 4)]);
 
