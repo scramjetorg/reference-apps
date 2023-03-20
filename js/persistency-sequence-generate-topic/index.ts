@@ -35,7 +35,7 @@ const exp: (TransformApp | { provides: string; contentType: string })[] = [
                 yield new Uint8Array(dataAmount).fill(0);
             }
 
-            console.log(`finished in: ${(Date.now() - startTime).toString()} ms`);
+            console.log(`Finished in: ${(Date.now() - startTime).toString()} ms. Bytes generated: ${a} x ${dataSize} + ${dataAmount} = ${a * dataSize + dataAmount}`);
         }
 
         this.on("new-test-start", () => {
