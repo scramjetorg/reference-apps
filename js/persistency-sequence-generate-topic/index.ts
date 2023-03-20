@@ -39,7 +39,7 @@ const exp: (TransformApp | { provides: string; contentType: string })[] = [
         }
 
         this.on("new-test-start", () => {
-            Readable.from(gen()).pipe(out);
+            Readable.from(gen()).pipe(out, { end: false });
         });
 
         return Object.assign(out, { topic: "persistance", contentType: "application/octet-stream" });
