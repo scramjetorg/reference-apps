@@ -25,7 +25,7 @@ const exp: (TransformApp | { provides: string; contentType: string })[] = [
                 await new Promise<void>((res) => {
                     const now = Date.now();
 
-                    while (now + intervalDelay >= Date.now()) {
+                    while (now + intervalDelay > Date.now()) {
                         // noop
                     }
 
