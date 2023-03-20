@@ -13,6 +13,8 @@ const exp: (TransformApp | { provides: string; contentType: string })[] = [
             let a = 0;
 
             const startTime = Date.now();
+            
+            console.log(`Generating ${dataSize} bytes every ${intervalDelay}ms ...`);
 
             while (dataAmount >= dataSize) {
                 a++;
