@@ -14,7 +14,7 @@ const exp: (TransformApp | { provides: string; contentType: string })[] = [
 
             const startTime = Date.now();
 
-            while (dataAmount > dataSize) {
+            while (dataAmount >= dataSize) {
                 a++;
                 dataAmount -= dataSize;
 
