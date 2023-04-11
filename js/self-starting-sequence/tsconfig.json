@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
     "outDir": "./dist",
+    "types": [],
+    "target": "ESNext",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
     "moduleResolution": "node"
   },
   "extends": "../../tsconfig.base.json",
