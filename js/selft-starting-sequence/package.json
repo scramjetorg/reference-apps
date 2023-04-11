@@ -17,7 +17,7 @@
     "scramjet": "^4.36.9"
   },
   "devDependencies": {
-    "@types/node": "^18.15.10",
+    "@types/node": "^15.12.5",
     "@scramjet/types": "^0.33.4"
   },
   "repository": {
