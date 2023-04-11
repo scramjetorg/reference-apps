@@ -1,6 +1,6 @@
 import { Octokit } from "octokit";
 import { Endpoints } from "@octokit/types";
-import * as data from "./ghdata.json";
+import * as data from "../ghdata.json";
 
 type listUserReposResponse = Endpoints["GET /repos/{owner}/{repo}/issues"]["response"];
 const readLabel = "read";

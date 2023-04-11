@@ -1,6 +1,6 @@
-import { GhRequest } from "./github";
+import { GhRequest } from "../github";
 import { ReadableApp } from "@scramjet/types";
-import * as ghSettings from "./ghdata.json";
+import * as ghSettings from "../ghdata.json";
 import { PassThrough } from "stream";
 
 function labelHelper(labels: any[], repo:string): Array<string> {
