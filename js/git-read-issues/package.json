@@ -23,7 +23,8 @@
   },
   "devDependencies": {
     "@octokit/types": "^9.0.0",
-    "@scramjet/types": "^0.33.1"
+    "@scramjet/types": "^0.33.4",
+    "@types/node": "^15.12.5"
   },
   "repository": {
     "type": "git",
