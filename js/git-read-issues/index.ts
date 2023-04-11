@@ -1,0 +1,38 @@
+import { GhRequest } from "./github";
+import { ReadableApp } from "@scramjet/types";
+import * as ghSettings from "./ghdata.json";
+import { PassThrough } from "stream";
+
+function labelHelper(labels: any[], repo:string): Array<string> {
+    return labels.reduce((acc, c) => c !== "read" && c.name !== "read" ? acc.concat([c.name]) : acc, []).concat([repo]);
+}
+const output: PassThrough & { topic: string, contentType: string } = Object.assign(
+    new PassThrough({ encoding:"utf-8" }), { topic: "issue", contentType: "application/x-ndjson" }
+);
+
+async function main() {
+    await Promise.all(
+        ghSettings.repos.map(async (e: string) => new GhRequest(e).search())
+    ).then((reposIssues) => reposIssues.flat().forEach(issue => {
+        if (issue !== undefined) {
+            output.write(JSON.stringify({
+                name: issue.title,
+                description: issue.body,
+                tags: labelHelper(issue.labels, issue.repo)
+            }) + "\n");
+        }
+    }));
+}
+const app: ReadableApp<any> = async function(
+    _stream,
+    interval = 1000 * 30
+) {
+    await main();
+    setInterval(async () => {
+        await main();
+    }, interval);
+
+    return output;
+};
+
+export default app;
