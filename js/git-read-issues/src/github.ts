@@ -21,7 +21,7 @@ class issue {
 }
 export class GhRequest {
     repo:string;
-    constructor(repo) {
+    constructor(repo:string) {
         this.repo = repo;
     }
     octokit = new Octokit({

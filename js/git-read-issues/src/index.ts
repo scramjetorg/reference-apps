@@ -1,4 +1,4 @@
-import { GhRequest } from "../github";
+import { GhRequest } from "./github";
 import { ReadableApp } from "@scramjet/types";
 import * as ghSettings from "../ghdata.json";
 import { PassThrough } from "stream";
