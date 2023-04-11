@@ -24,7 +24,7 @@ export class GhRequest {
     constructor(repo:string) {
         this.repo = repo;
     }
-    octokit = new Octokit({
+    octokit:Octokit = new Octokit({
         auth: data.auth,
     });
     gitRequestPromise() : Promise<listUserReposResponse> {
