@@ -13,6 +13,7 @@ const app: ReadableApp<string> = async function(_stream,interval:number) {
     await hub.sendNamedData("info", `starting with id: ${instanceId} +/n`);
     await seqClient.start({ appConfig:{} });
     await instanceClient.kill({ removeImmediately:true });
+
     return Promise.resolve("end");
 };
 
