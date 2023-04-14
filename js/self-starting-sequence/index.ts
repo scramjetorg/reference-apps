@@ -5,7 +5,7 @@ import { PassThrough } from "stream";
 const output: PassThrough & { topic: string, contentType: string } = Object.assign(
     new PassThrough({ encoding:"utf-8" }), { topic: "self-starting-data", contentType: "text/plain" }
 );
-const app: ReadableApp<string> = async function(_stream,interval:number) {
+const app: ReadableApp<string> = async function(_stream,interval:number,sequenceNumber:number=0) {
     const hub = this.hub!;
     const instanceId = this.instanceId;
     const instanceClient = hub.getInstanceClient(instanceId);
@@ -13,9 +13,9 @@ const app: ReadableApp<string> = async function(_stream,interval:number) {
     const seqClient = hub.getSequenceClient(seqId);
 
     await defer(interval);
-    this.logger.info(`starting sequence with ${interval} ms interval `);
+    this.logger.info(`starting sequence number ${sequenceNumber} with ${interval} ms interval `);
     output.push(`starting with id: ${instanceId} +/n`);
-    await seqClient.start({ appConfig:{} });
+    await seqClient.start({ appConfig:{interval:interval,sequenceNumber:sequenceNumber+1} });
     await instanceClient.kill({ removeImmediately:true });
 
     return output
