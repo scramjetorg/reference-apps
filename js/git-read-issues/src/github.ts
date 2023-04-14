@@ -23,14 +23,16 @@ export class GhRequest {
     repo:string;
     owner:string;
     apiKey:string;
+    octokit:Octokit;
     constructor(settings:{repo:string,owner:string},apiKey:string) {
         this.repo = settings.repo;
         this.owner = settings.owner;
         this.apiKey=apiKey;
+        this.octokit = new Octokit({
+            auth: apiKey,
+        });
     }
-    octokit:Octokit = new Octokit({
-        auth: data.auth,
-    });
+
     gitRequestPromise() : Promise<listUserReposResponse> {
         return this.octokit.rest.issues.listForRepo({
             owner: this.owner,
