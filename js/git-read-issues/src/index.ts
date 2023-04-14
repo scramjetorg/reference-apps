@@ -10,9 +10,9 @@ const output: PassThrough & { topic: string, contentType: string } = Object.assi
     new PassThrough({ encoding:"utf-8" }), { topic: "issue", contentType: "application/x-ndjson" }
 );
 
-async function main() {
+async function main(apiKey:string) {
     await Promise.all(
-        ghSettings.repos.map(async (e: string) => new GhRequest(e).search())
+        ghSettings.repos.map(async (e) => new GhRequest(e,apiKey).search())
     ).then((reposIssues) => reposIssues.flat().forEach(issue => {
         if (issue !== undefined) {
             output.write(JSON.stringify({
@@ -25,11 +25,12 @@ async function main() {
 }
 const app: ReadableApp<any> = async function(
     _stream,
-    interval = 1000 * 30
+    interval:number = 1000 * 30,
+    apiKey:string
 ) {
-    await main();
+    await main(apiKey);
     setInterval(async () => {
-        await main();
+        await main(apiKey);
     }, interval);
 
     return output;

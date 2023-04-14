@@ -1,5 +1,12 @@
 {
-    "owner": "owner",
-    "auth": "api-key",
-    "repos":["example", "example1"]
+    "repos":[
+    {
+        "owner":"owner",
+        "repo":"example"
+    },
+    {
+        "owner":"owner",
+        "repo":"example1"
+    }
+]
 }

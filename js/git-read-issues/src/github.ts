@@ -11,8 +11,8 @@ class issue {
     body:string;
     repo:string;
     labels:Array<string|Object>;
-    constructor(id:number, title:string, body:string, repo:string, labels:Array<string|object>) {
-        this.url = `https://github.com/${data.owner}/${repo}/issues/${id}`;
+    constructor(id:number, title:string, body:string, repo:string, labels:Array<string|object>,owner:string) {
+        this.url = `https://github.com/${owner}/${repo}/issues/${id}`;
         this.title = title;
         this.body = body;
         this.repo = repo;
@@ -21,15 +21,19 @@ class issue {
 }
 export class GhRequest {
     repo:string;
-    constructor(repo:string) {
-        this.repo = repo;
+    owner:string;
+    apiKey:string;
+    constructor(settings:{repo:string,owner:string},apiKey:string) {
+        this.repo = settings.repo;
+        this.owner = settings.owner;
+        this.apiKey=apiKey;
     }
     octokit:Octokit = new Octokit({
         auth: data.auth,
     });
     gitRequestPromise() : Promise<listUserReposResponse> {
         return this.octokit.rest.issues.listForRepo({
-            owner: data.owner,
+            owner: this.owner,
             repo: this.repo,
             state: "open",
         });
@@ -39,7 +43,7 @@ export class GhRequest {
 
         gitRequestResponse.data.forEach(async (e) => {
             await this.octokit.rest.issues.addLabels({
-                owner: data.owner,
+                owner: this.owner,
                 repo: this.repo,
                 issue_number: e.number,
                 labels: [readLabel]
@@ -61,7 +65,7 @@ export class GhRequest {
 
         await this.gitHubFilter().then((result) => result.map((e) => {
             if(typeof e.body === "string") {
-                const entry = new issue(e.number, e.title, e.body, this.repo, e.labels);
+                const entry = new issue(e.number, e.title, e.body, this.repo, e.labels,this.owner);
                 issuesArr.push(entry);
             }
 
