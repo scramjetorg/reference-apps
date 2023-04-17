@@ -14,11 +14,11 @@ const app: ReadableApp<string> = async function(_stream,interval:number,sequence
 
     await defer(interval);
     this.logger.info(`starting sequence number ${sequenceNumber} with ${interval} ms interval `);
-    output.push(`starting with id: ${instanceId} +/n`);
-    await seqClient.start({ appConfig:{interval:interval,sequenceNumber:sequenceNumber+1} });
+    output.push(`Starting with id: ${instanceId}\n`);
+    await seqClient.start({ appConfig: { interval, sequenceNumber: sequenceNumber + 1 }});
     await instanceClient.kill({ removeImmediately:true });
 
-    return output
+    return output;
 };
 
 export default app;
