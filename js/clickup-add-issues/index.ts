@@ -5,8 +5,8 @@ import { ClickUpClient } from "./clickup";
 
 const mod: (TransformApp | { requires: string, contentType: string})[] = [
     { requires: "issue", contentType: "application/x-ndjson" },
-    function(input: Streamable<any>) {
-        const clickupClient = new ClickUpClient();
+    function(input: Streamable<any>,apiKey: string) {
+        const clickupClient = new ClickUpClient(apiKey);
 
         const onError = (error: any) => { console.error(error); };
 

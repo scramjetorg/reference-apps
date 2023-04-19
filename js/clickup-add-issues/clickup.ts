@@ -11,9 +11,10 @@ type CuRequestType = {
 export class ClickUpClient {
     listId:string;
     token:string;
-    constructor() {
+    constructor(token:string) {
         this.listId = cuSettings.listId;
-        this.token = cuSettings.token;
+        this.token = token;
+        console.log(token);
     }
     sendRequest(issue :CuRequestType) {
         const body = JSON.stringify({
