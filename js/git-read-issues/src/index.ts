@@ -8,6 +8,7 @@ function labelHelper(labels: any[], repo: string): Array<string> {
         .reduce((acc, c) => c !== "read" && c.name !== "read" ? acc.concat([c.name]) : acc, [])
         .concat([repo]);
 }
+
 const output: PassThrough & { topic: string; contentType: string } = Object.assign(
     new PassThrough({ encoding: "utf-8" }),
     {
@@ -31,8 +32,10 @@ async function main(apiKey: string) {
         })
     );
 }
+
 const app: ReadableApp<any> = async function (_stream, interval: number = 1000 * 30, apiKey: string) {
     await main(apiKey);
+
     setInterval(async () => {
         await main(apiKey);
     }, interval);

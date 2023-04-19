@@ -1,6 +1,7 @@
 import { Octokit } from "octokit";
 import { ListUserReposResponse } from "./types/types";
 import { Issue } from "./issue";
+
 const readLabel = "read";
 
 export class GithubClient {
@@ -25,6 +26,7 @@ export class GithubClient {
             state: "open"
         });
     }
+
     async gitLabel() {
         const gitRequestResponse: ListUserReposResponse = await this.gitRequestPromise();
 
@@ -39,6 +41,7 @@ export class GithubClient {
 
         return gitRequestResponse.data;
     }
+
     async gitHubFilter() {
         return await this.gitLabel().then((res) => {
             const result = res.filter(
@@ -48,6 +51,7 @@ export class GithubClient {
             return result;
         });
     }
+
     async search(): Promise<Array<Issue>> {
         const issuesArr: Array<Issue> = [];
 
@@ -60,6 +64,7 @@ export class GithubClient {
                 }
             })
         );
+
         return issuesArr;
     }
 }
