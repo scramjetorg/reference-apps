@@ -4,13 +4,14 @@ import { ClientRequest } from "http";
 import * as cuSettings from "./cudata.json";
 
 type CuRequestType = {
-    name:string,
-    description:string,
-    tags:Array<string>
+    name: string;
+    description: string;
+    tags: Array<string>;
 }
 export class ClickUpClient {
-    listId:string;
-    token:string;
+    listId: string;
+    token: string;
+
     constructor(token:string) {
         this.listId = cuSettings.listId;
         this.token = token;

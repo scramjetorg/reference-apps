@@ -1,6 +1,6 @@
 # Clickup add issues
 
-This sequence reads info send by [git-read-issues]() then adds all the issues to a clickup list
+This sequence reads info send by [git-read-issues]() then adds all the issues to a clickup list.
 
 > ! This sequence should be used only in combination with git-read-issues
 
