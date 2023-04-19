@@ -34,7 +34,7 @@ export class ClickupClient {
             },
             method: "POST",
         };
-        const req:ClientRequest = request(options, (res) => {
+        const req: ClientRequest = request(options, (res) => {
             console.log("statusCode:", res.statusCode);
             console.log("headers:", res.headers);
 

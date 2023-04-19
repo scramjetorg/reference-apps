@@ -5,7 +5,7 @@ import { ClickupClient } from "./clickupClient";
 
 const mod: (TransformApp | { requires: string, contentType: string})[] = [
     { requires: "issue", contentType: "application/x-ndjson" },
-    function(input: Streamable<any>,apiKey: string) {
+    function(input: Streamable<any>, apiKey: string) {
         const clickupClient = new ClickupClient(apiKey);
 
         const onError = (error: any) => { console.error(error); };
@@ -15,9 +15,9 @@ const mod: (TransformApp | { requires: string, contentType: string})[] = [
                 console.log(data);
                 data = JSON.parse(data);
                 clickupClient.sendRequest({
-                    name:data.name,
-                    description:data.description,
-                    tags:data.tags
+                    name: data.name,
+                    description: data.description,
+                    tags: data.tags
                 });
             }).catch((error: any) => {
                 onError(error);
