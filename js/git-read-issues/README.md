@@ -8,15 +8,27 @@ it prepares the data in a format that will be used in [clickup-add-issues]() and
 
 ## Setup
 
-Change data in `ghdata.json` to one that applies to you
+Change data in `ghdata.json` to one that applies to you in a given format
 
 ```json
 {
-    "owner": "owner", //Repository owner
-    "auth": "KEY", //API-KEY
-    "repos":["example", "example2"] //aray of repositories to check
+    "repos":[
+    {
+        "owner":"owner",
+        "repo":"example"
+    },
+    {
+        "owner":"owner",
+        "repo":"example1"
+    }
+]
 }
 ```
+
+When running app please provide 2 parameters:
+
+- Time interval
+- Your Github api key
 
 ## Clickup-add-issues
 
