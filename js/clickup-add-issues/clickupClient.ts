@@ -8,7 +8,8 @@ type CuRequestType = {
     description: string;
     tags: Array<string>;
 }
-export class ClickUpClient {
+
+export class ClickupClient {
     listId: string;
     token: string;
 

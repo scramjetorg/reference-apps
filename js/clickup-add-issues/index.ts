@@ -1,12 +1,12 @@
 /* eslint-disable no-console */
 import { Streamable, TransformApp } from "@scramjet/types";
 import { StringStream } from "scramjet";
-import { ClickUpClient } from "./clickup";
+import { ClickupClient } from "./clickupClient";
 
 const mod: (TransformApp | { requires: string, contentType: string})[] = [
     { requires: "issue", contentType: "application/x-ndjson" },
     function(input: Streamable<any>,apiKey: string) {
-        const clickupClient = new ClickUpClient(apiKey);
+        const clickupClient = new ClickupClient(apiKey);
 
         const onError = (error: any) => { console.error(error); };
 
