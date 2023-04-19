@@ -18,8 +18,8 @@ Change data in `ghdata.json` to one that applies to you in a given format
             "repo": "example"
         },
         {
-            "owner":"owner",
-            "repo":"example1"
+            "owner": "owner",
+            "repo": "example1"
         }
     ]
 }
@@ -27,10 +27,9 @@ Change data in `ghdata.json` to one that applies to you in a given format
 
 When running app please provide 2 parameters:
 
-- Time interval
-- Your Github api key
+-   Time interval
+-   Your Github api key
 
 ## Clickup-add-issues
 
 [click here to see this sequence]()
-
