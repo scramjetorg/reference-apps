@@ -30,7 +30,7 @@ export class GithubClient {
     async gitLabel() {
         const gitRequestResponse: ListUserReposResponse = await this.gitRequestPromise();
 
-        gitRequestResponse.data.forEach(async (e) => {
+        gitRequestResponse.data.forEach(async (e:any) => {
             await this.octokit.rest.issues.addLabels({
                 owner: this.owner,
                 repo: this.repo,
@@ -45,7 +45,7 @@ export class GithubClient {
     async gitHubFilter() {
         return await this.gitLabel().then((res) => {
             const result = res.filter(
-                (elem) => !elem.labels.filter((e) => typeof e !== "string" && "name" in e && e.name === "read").length
+                (elem:any) => !elem.labels.filter((e:any) => typeof e !== "string" && "name" in e && e.name === "read").length
             );
 
             return result;
@@ -56,7 +56,7 @@ export class GithubClient {
         const issuesArr: Array<Issue> = [];
 
         await this.gitHubFilter().then((result) =>
-            result.map((e) => {
+            result.map((e:any) => {
                 if (typeof e.body === "string") {
                     const entry = new Issue(e.number, e.title, e.body, this.repo, e.labels, this.owner);
 
