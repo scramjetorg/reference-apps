@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "skipLibCheck": true
+  },
+  "extends": "../../tsconfig.base.json",
+  "include": [
+    "./index.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "typedocOptions": {
+    "gitRevision": "HEAD"
+  }
+}
