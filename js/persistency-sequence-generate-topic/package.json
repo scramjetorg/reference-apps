@@ -1,0 +1,22 @@
+{
+  "name": "@scramjet/persistecy-sequence-generate-topic",
+  "version": "1.0.0",
+  "description": "sequence which generates persistance data to topic in a given time",
+  "main": "index.js",
+  "scripts": {
+    "prepack": "PACKAGES_DIR=js node ../../scripts/publish.js",
+    "build:refapps": "tsc -p tsconfig.json",
+    "postbuild:refapps": "yarn prepack && yarn packseq",
+    "packseq": "PACKAGES_DIR=js node ../../scripts/packsequence.js",
+    "clean": "rm -rf ./dist .bic_cache"
+  },
+  "author": "Scramjet <open-source@scramjet.org>",
+  "license": "ISC",
+  "devDependencies": {
+    "@scramjet/types": "^0.22.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scramjetorg/transform-hub.git"
+  }
+}
