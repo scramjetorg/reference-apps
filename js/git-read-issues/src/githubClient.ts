@@ -45,7 +45,7 @@ export class GithubClient {
     async gitHubFilter() {
         return await this.gitLabel().then((res) => {
             const result = res.filter(
-                (elem:any) => !elem.labels.filter((e:any) => typeof e !== "string" && "name" in e && e.name === "read").length
+                (elem: any) => !elem.labels.filter((e: any) => typeof e !== "string" && "name" in e && e.name === "read").length
             );
 
             return result;
@@ -56,7 +56,7 @@ export class GithubClient {
         const issuesArr: Array<Issue> = [];
 
         await this.gitHubFilter().then((result) =>
-            result.map((e:any) => {
+            result.map((e: any) => {
                 if (typeof e.body === "string") {
                     const entry = new Issue(e.number, e.title, e.body, this.repo, e.labels, this.owner);
 

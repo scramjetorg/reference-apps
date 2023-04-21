@@ -25,10 +25,21 @@ Change data in `ghdata.json` to one that applies to you in a given format
 }
 ```
 
-When running app please provide 2 parameters:
+## Running sequence
+>! It is recommended to start Clickup-add-issues before this one
 
--   Time interval
--   Your Github api key
+```
+//install dependencies
+npm install
+
+//build the program and prepare to be sent
+npm run build
+
+//deploy a compiled folder with a parameters
+//replace 1000 with a interval you want in ms
+//replace api key with your github api key
+si seq deploy dist --args '[1000,"apikey"]'
+```
 
 ## Clickup-add-issues
 

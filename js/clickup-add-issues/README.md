@@ -16,6 +16,20 @@ Change data in `cudata.json` to one that applies to you
 
 When running this sequence it is necessary to use clickup api key as an argument
 
+## Running
+
+```js
+//install dependencies
+npm install
+
+//build the program and prepare to be sent
+npm run build
+
+//deploy a compiled folder with a parameters
+//replace api key with your clickup api key
+si seq deploy dist --args '["apikey"]'
+```
+
 ## Git-read-issues
 
 [click here to see this sequence](https://github.com/scramjetorg/reference-apps/tree/main/js/git-read-issues)
