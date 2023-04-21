@@ -13,8 +13,10 @@ const app: ReadableApp<string> = async function(_stream,interval:number,sequence
     const seqClient = hub.getSequenceClient(seqId);
 
     await defer(interval);
+
     this.logger.info(`starting sequence number ${sequenceNumber} with ${interval} ms interval `);
     output.push(`Starting with id: ${instanceId}\n`);
+
     await seqClient.start({ appConfig: { interval, sequenceNumber: sequenceNumber + 1 }});
     await instanceClient.kill({ removeImmediately:true });
 
