@@ -1,12 +1,12 @@
 {
     "repos": [
         {
-            "owner": "piotrek6641",
-            "repo": "f4elearning"
+            "owner": "owner",
+            "repo": "exampl"
         },
         {
-            "owner": "piotrek6641",
-            "repo": "SSS-Project"
+            "owner": "owner",
+            "repo": "example"
         }
     ]
 }
