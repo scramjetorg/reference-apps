@@ -2,11 +2,11 @@
     "repos": [
         {
             "owner": "owner",
-            "repo": "exampl"
+            "repo": "example"
         },
         {
             "owner": "owner",
-            "repo": "example"
+            "repo": "example1"
         }
     ]
 }
