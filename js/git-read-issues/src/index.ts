@@ -33,7 +33,7 @@ async function main(apiKey: string) {
     );
 }
 
-const app: ReadableApp<any> = async function (_stream, interval: number = 1000 * 30, apiKey: string) {
+const app: ReadableApp<any> = async function (_stream, interval: number, apiKey: string) {
     await main(apiKey);
 
     setInterval(async () => {
