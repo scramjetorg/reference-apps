@@ -1,26 +1,33 @@
 /* eslint-disable no-console */
 import { PassThrough, Readable } from "stream";
-import { randomBytes } from "crypto";
+//import { randomBytes } from "crypto";
 import { TransformApp } from "@scramjet/types";
 
 const exp: (TransformApp | { provides: string; contentType: string })[] = [
-    async function(_input, executionTime: number = 1 * 10 * 1000, dataAmount: number = 16 * 1000) {
+    async function(_input, executionTime: number = 3600 * 1000 / 60, dataAmount: number = 1024 * 1024 * 512) {
         const out = new PassThrough();
-        const dataSize = 16;
+        const dataSize = 17;
         const intervalDelay = executionTime / (dataAmount / dataSize);
 
         async function* gen() {
             let a = 0;
             let tempDataAmount = dataAmount;
             const startTime = Date.now();
-            
+
             console.log(`Generating ${dataSize} bytes every ${intervalDelay}ms ...`);
 
             while (tempDataAmount >= dataSize) {
                 a++;
-                tempDataAmount -= dataSize;
 
-                yield Buffer.concat([Buffer.from(new Uint32Array([a])), randomBytes(dataSize - 4)]);
+                const tsBuffer = Buffer.alloc(8);
+
+                tsBuffer.writeBigUInt64BE(BigInt(Date.now()));
+
+                const outString = tsBuffer.toString("hex") + "\n";
+
+                tempDataAmount -= outString.length;
+
+                yield outString;
 
                 await new Promise<void>((res) => {
                     const now = Date.now();
@@ -40,7 +47,7 @@ const exp: (TransformApp | { provides: string; contentType: string })[] = [
             console.log(`Finished in: ${(Date.now() - startTime).toString()} ms. Bytes generated: ${a} x ${dataSize} + ${dataAmount} = ${a * dataSize + dataAmount}`);
         }
 
-        this.on("new-test-start", () => {
+        this.on("start", () => {
             Readable.from(gen()).pipe(out, { end: false });
         });
 
