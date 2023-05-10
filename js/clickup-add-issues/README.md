@@ -1,6 +1,6 @@
 # Clickup add issues
 
-This sequence reads info send by [git-read-issues]() then adds all the issues to a clickup list.
+This sequence reads info send by [git-read-issues](https://github.com/scramjetorg/reference-apps/tree/main/js/git-read-issues) then adds all the issues to a clickup list.
 
 > ! This sequence should be used only in combination with git-read-issues
 
@@ -18,12 +18,14 @@ When running this sequence it is necessary to use clickup api key as an argument
 
 ## Running
 
+Make sure you are in clickup-add-issues directory, not in a root folder.
+
 ```js
 //install dependencies
 npm install
 
 //build the program and prepare to be sent
-npm run build
+npm run build:refapps
 
 //deploy a compiled folder with a parameters
 //replace api key with your clickup api key
