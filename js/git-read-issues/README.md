@@ -37,10 +37,12 @@ npm install
 //build the program and prepare to be sent
 npm run build:refapps
 
+//go to a parent direcory
+cd ..
 //deploy a compiled folder with a parameters
 //replace 1000 with a interval you want in ms
 //replace api key with your github api key
-si seq deploy dist --args '[1000,"apikey"]'
+si seq deploy git-read-issues.tar.gz --args '[1000,"apikey"]'
 ```
 
 ## Clickup-add-issues
