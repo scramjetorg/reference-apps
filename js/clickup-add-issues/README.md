@@ -27,9 +27,12 @@ npm install
 //build the program and prepare to be sent
 npm run build:refapps
 
+//go to a parent directory
+cd ..
+
 //deploy a compiled folder with a parameters
 //replace api key with your clickup api key
-si seq deploy dist --args '["apikey"]'
+si seq deploy clickup-add-issues.tar.gz --args '["apikey"]'
 ```
 
 ## Git-read-issues
