@@ -8,7 +8,7 @@ It prepares the data in a format that will be used in [clickup-add-issues](https
 
 ## Prerequisites
 
-- Github api key with an permision to read/write labels and read access to repo
+- Github api key with a permission to read/write labels and read access to repo
 ## Setup
 
 Change data in `ghdata.json` to one that applies to you in a given format
