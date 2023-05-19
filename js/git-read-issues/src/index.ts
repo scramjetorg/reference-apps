@@ -18,7 +18,9 @@ const output: PassThrough & { topic: string; contentType: string } = Object.assi
 );
 
 async function main(apiKey: string) {
-    await Promise.all(ghSettings.repos.map(async (e) => new GithubClient(e, apiKey).search())).then((reposIssues) =>
+    const ghClient = new GithubClient(apiKey);
+
+    await Promise.all(ghSettings.repos.map(async (e) => ghClient.search(e))).then((reposIssues) =>
         reposIssues.flat().forEach((issue) => {
             if (issue !== undefined) {
                 output.write(
@@ -33,13 +35,20 @@ async function main(apiKey: string) {
     );
 }
 
-const app: ReadableApp<any> = async function (_stream, apiKey: string) {
-    await main(apiKey);
 
+const app: ReadableApp<any> = async function(_stream, apiKey: string) {
     const interval = 1000 * 60;
 
+    await main(apiKey)
+        .catch((e) => {
+            this.logger.write("ERROR", e);
+        });
+
     setInterval(async () => {
-        await main(apiKey);
+        await main(apiKey)
+            .catch((e) => {
+                this.logger.write("ERROR", e);
+            });
     }, interval);
 
     return output;
