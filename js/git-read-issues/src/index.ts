@@ -35,6 +35,7 @@ async function main(apiKey: string) {
     );
 }
 
+
 const app: ReadableApp<any> = async function(_stream, apiKey: string) {
     const interval = 1000 * 60;
 
@@ -42,8 +43,6 @@ const app: ReadableApp<any> = async function(_stream, apiKey: string) {
         .catch((e) => {
             this.logger.write("ERROR", e);
         });
-
-
 
     setInterval(async () => {
         await main(apiKey)
