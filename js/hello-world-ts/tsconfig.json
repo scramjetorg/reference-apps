@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "types": [],
+    "target": "ESNext",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node"
+  },
+  "extends": "../../tsconfig.base.json",
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
+  "typedocOptions": {
+    "entryPoints": [
+      "index.ts"
+    ],
+    "out": "../../docs/model",
+    "gitRevision": "HEAD"
+  }
+}
