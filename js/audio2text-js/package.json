@@ -10,7 +10,7 @@
     "build": "tsc -p tsconfig.json",
     "build:refapps": "tsc -p tsconfig.json",
     "postbuild:refapps": "yarn prepack && yarn packseq",
-    "postbuild": "cp -r package.json dist/ && (cd dist && npm i --omit=dev) && cp src/utils/song.wav dist/utils && cp src/utils/config.json dist/utils ",
+    "postbuild": "cp -r package.json dist/ && (cd dist && npm i --omit=dev) && cp src/utils/song.wav dist/utils",
     "pack": "si seq pack ./dist/",
     "packseq": "PACKAGES_DIR=js node ../../scripts/packsequence.js",
     "clean": "rm -rf ./dist ./*.tar.gz"
