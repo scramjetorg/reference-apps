@@ -1,5 +1,6 @@
+/* eslint-disable no-console */
 import { GithubClient } from "./githubClient";
-import { ReadableApp } from "@scramjet/types";
+import { AppContext, ReadableApp } from "@scramjet/types";
 import * as ghSettings from "./ghdata.json";
 import { PassThrough } from "stream";
 
@@ -17,10 +18,11 @@ const output: PassThrough & { topic: string; contentType: string } = Object.assi
     }
 );
 
-async function main(apiKey: string) {
-    await Promise.all(ghSettings.repos.map(async (e) => new GithubClient(e, apiKey).search())).then((reposIssues) =>
+async function main(this:AppContext<any, any>, ghClient: GithubClient) {
+    await Promise.all(ghSettings.repos.map(async (e) => ghClient.search(e))).then((reposIssues) =>
         reposIssues.flat().forEach((issue) => {
             if (issue !== undefined) {
+                this.logger.info("pushing new issue to topic", issue);
                 output.write(
                     JSON.stringify({
                         name: issue.title,
@@ -30,14 +32,28 @@ async function main(apiKey: string) {
                 );
             }
         })
-    );
+    ).catch((e) => {
+        this.logger.error("main error", e);
+    });
 }
 
-const app: ReadableApp<any> = async function (_stream, interval: number, apiKey: string) {
-    await main(apiKey);
+const app: ReadableApp<any> = async function(_stream, apiKey: string) {
+    const interval: number = 1000 * 60;
+    const ghClient = new GithubClient(apiKey, this.logger);
+
+    this.logger.info("checking all repositories...");
+    try {
+        await ghClient.handShake();
+    } catch (error) {
+        this.logger.error("handshake failed", error);
+        throw new Error("failed to get repository details, please check your key or repo details");
+    }
+    this.logger.info("Github repository checks and handshake went successful");
+
+    await main.call(this, ghClient);
 
     setInterval(async () => {
-        await main(apiKey);
+        await main.call(this, ghClient);
     }, interval);
 
     return output;
