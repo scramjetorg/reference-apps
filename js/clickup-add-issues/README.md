@@ -4,6 +4,9 @@ This sequence reads info send by [git-read-issues](https://github.com/scramjetor
 
 > ! This sequence should be used only in combination with git-read-issues
 
+## Prerequisites
+
+- Clickup api key with a permission to create new tasks
 ## Setup
 
 Change data in `cudata.json` to one that applies to you
@@ -30,7 +33,7 @@ npm run build:refapps
 //go to a parent directory
 cd ..
 
-//deploy a compiled folder with a parameters
+//deploy a compiled package with a parameters
 //replace api key with your clickup api key
 si seq deploy clickup-add-issues.tar.gz --args '["apikey"]'
 ```

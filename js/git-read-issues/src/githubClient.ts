@@ -49,7 +49,10 @@ export class GithubClient {
     }
 
     public async search(repo:{owner:string, repo:string}): Promise<Issue[]> {
+
         this.logger.info(`checking repo: ${repo.owner}/${repo.repo} ...`);
+
+
         this.owner = repo.owner;
         this.repo = repo.repo;
         const issuesArr: Issue[] = [];
@@ -102,5 +105,9 @@ export class GithubClient {
                 }
             }
         }));
+                }
+            });
+            return issuesArr;
+        });
     }
 }

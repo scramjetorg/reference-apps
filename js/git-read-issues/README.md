@@ -8,6 +8,9 @@ This sequence validates if the body of issue is empty, if so issue will be skipe
 
 > ! All issues that has been read by this sequence will be labeled as read in a github
 
+## Prerequisites
+
+- Github api key with a permission to read/write labels and read access to repo
 
 ## Setup
 
@@ -42,10 +45,9 @@ npm run build:refapps
 
 //go to a parent direcory
 cd ..
-//deploy a compiled folder with a parameters
-//replace 1000 with a interval you want in ms
+//deploy a compiled package with a parameters
 //replace api key with your github api key
-si seq deploy git-read-issues.tar.gz --args '[1000,"apikey"]'
+si seq deploy git-read-issues.tar.gz --args '["apikey"]'
 ```
 
 ## Clickup-add-issues
