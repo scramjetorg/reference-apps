@@ -52,7 +52,6 @@ export class GithubClient {
 
         this.logger.info(`checking repo: ${repo.owner}/${repo.repo} ...`);
 
-
         this.owner = repo.owner;
         this.repo = repo.repo;
         const issuesArr: Issue[] = [];
