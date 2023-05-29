@@ -4,11 +4,14 @@ This sequence reads all of the github issues for a given repositories.
 
 It prepares the data in a format that will be used in [clickup-add-issues](https://github.com/scramjetorg/reference-apps/tree/main/js/clickup-add-issues) and send it to a topic.
 
+This sequence validates if the body of issue is empty, if so issue will be skiped.
+
 > ! All issues that has been read by this sequence will be labeled as read in a github
 
 ## Prerequisites
 
 - Github api key with a permission to read/write labels and read access to repo
+
 ## Setup
 
 Change data in `ghdata.json` to one that applies to you in a given format

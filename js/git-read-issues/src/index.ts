@@ -1,11 +1,12 @@
+/* eslint-disable no-console */
 import { GithubClient } from "./githubClient";
-import { ReadableApp } from "@scramjet/types";
+import { AppContext, ReadableApp } from "@scramjet/types";
 import * as ghSettings from "./ghdata.json";
 import { PassThrough } from "stream";
 
 function labelHelper(labels: any[], repo: string): Array<string> {
     return labels
-        .reduce((acc, c) => c !== "read" && c.name !== "read" ? acc.concat([c.name]) : acc, [])
+        .filter(label => label.name === "read" || label === "read")
         .concat([repo]);
 }
 
@@ -17,12 +18,11 @@ const output: PassThrough & { topic: string; contentType: string } = Object.assi
     }
 );
 
-async function main(apiKey: string) {
-    const ghClient = new GithubClient(apiKey);
-
+async function main(this:AppContext<any, any>, ghClient: GithubClient) {
     await Promise.all(ghSettings.repos.map(async (e) => ghClient.search(e))).then((reposIssues) =>
         reposIssues.flat().forEach((issue) => {
             if (issue !== undefined) {
+                this.logger.info("pushing new issue to topic", issue);
                 output.write(
                     JSON.stringify({
                         name: issue.title,
@@ -32,23 +32,28 @@ async function main(apiKey: string) {
                 );
             }
         })
-    );
+    ).catch((e) => {
+        this.logger.error("main error", e);
+    });
 }
 
-
 const app: ReadableApp<any> = async function(_stream, apiKey: string) {
-    const interval = 1000 * 60;
+    const interval: number = 1000 * 60;
+    const ghClient = new GithubClient(apiKey, this.logger);
 
-    await main(apiKey)
-        .catch((e) => {
-            this.logger.write("ERROR", e);
-        });
+    this.logger.info("checking all repositories...");
+    try {
+        await ghClient.handShake();
+    } catch (error) {
+        this.logger.error("handshake failed", error);
+        throw new Error("failed to get repository details, please check your key or repo details");
+    }
+    this.logger.info("Github repository checks and handshake went successful");
+
+    await main.call(this, ghClient);
 
     setInterval(async () => {
-        await main(apiKey)
-            .catch((e) => {
-                this.logger.write("ERROR", e);
-            });
+        await main.call(this, ghClient);
     }, interval);
 
     return output;
