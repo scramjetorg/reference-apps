@@ -11,9 +11,9 @@ export class GithubClient {
     owner: string = "";
     apiKey: string;
     octokit: Octokit;
-    logger:IObjectLogger;
+    logger: IObjectLogger;
 
-    constructor(apiKey: string, logger:IObjectLogger) {
+    constructor(apiKey: string, logger: IObjectLogger) {
         this.apiKey = apiKey;
         this.logger = logger;
         this.octokit = new Octokit({
