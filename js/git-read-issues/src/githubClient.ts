@@ -55,9 +55,9 @@ export class GithubClient {
         const issuesArr: Issue[] = [];
 
         return this.gitHubFilter().then(async (result) => {
-            await result.map(async (e) => {
+            result.map(async (e) => {
                 if (typeof e.body === "string") {
-                    this.logger.info(`found new issue ${e.title} in: ${this.repo}`);
+                    this.logger.info(`found new issue "${e.title}" in: ${this.repo}`);
                     const entry = new Issue(e.number, e.title, e.body, this.repo, e.labels, this.owner);
 
                     issuesArr.push(entry);

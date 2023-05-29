@@ -6,7 +6,7 @@ import { PassThrough } from "stream";
 
 function labelHelper(labels: any[], repo: string): Array<string> {
     return labels
-        .reduce((acc, c) => c !== "read" && c.name !== "read" ? acc.concat([c.name]) : acc, [])
+        .filter(label => label.name === "read" || label === "read")
         .concat([repo]);
 }
 
