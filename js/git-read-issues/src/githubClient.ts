@@ -30,7 +30,8 @@ export class GithubClient {
         const res = await this.octokit.rest.issues.listForRepo({
             owner: this.owner,
             repo: this.repo,
-            state: "open"
+            state: "open",
+            issue_type: "issue"
         });
 
         return res.data.filter(
