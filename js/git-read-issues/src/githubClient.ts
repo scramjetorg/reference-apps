@@ -14,7 +14,6 @@ export class GithubClient {
     octokit: Octokit;
     logger: IObjectLogger;
     baseURL: string = "https://api.github.com/repos"
-    URL: string = "";
 
     constructor(apiKey: string, logger: IObjectLogger) {
         this.apiKey = apiKey;
@@ -23,11 +22,6 @@ export class GithubClient {
             auth: apiKey,
             log: console
         });
-    }
-    setRepo(repo: { owner:string, repo:string }) {
-        this.owner = repo.owner;
-        this.repo = repo.repo;
-        this.URL = `${this.baseURL}/${repo.owner}/${repo.repo}`
     }
 
     private async gitHubFilter() {
@@ -67,7 +61,8 @@ export class GithubClient {
 
                     issuesArr.push(entry);
 
-                    await fetch(`${this.URL}/issues/${e.number}/labels`, fetchOptions("POST",this.apiKey,JSON.stringify({"labels": [readLabel]})))
+                    const URL = `${this.baseURL}/${repo.owner}/${repo.repo}/issues/${e.number}/labels`
+                    await fetch(URL, fetchOptions("POST",this.apiKey,JSON.stringify({"labels": [readLabel]})))
                 } else {
                     this.logger.info("found issue but its body was empty", e.title);
                 }
