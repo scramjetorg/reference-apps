@@ -29,7 +29,8 @@ export class GithubClient {
             owner: this.owner,
             repo: this.repo,
             state: "open",
-            issue_type: "issue"
+            issue_type: "issue",
+            per_page: 100
         });
 
         return res.data.filter(
