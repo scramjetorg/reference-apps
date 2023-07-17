@@ -1,7 +1,7 @@
 export default (
     method: string,
     token: string,
-    body: string
+    body?: string
     ): RequestInit => {
     return {
         method: method,

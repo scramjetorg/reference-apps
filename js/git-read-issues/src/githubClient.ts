@@ -13,7 +13,8 @@ export class GithubClient {
     apiKey: string;
     octokit: Octokit;
     logger: IObjectLogger;
-    baseURL: string = "https://api.github.com/repos"
+    baseURL: string = "https://api.github.com"
+
 
     constructor(apiKey: string, logger: IObjectLogger) {
         this.apiKey = apiKey;
@@ -25,16 +26,11 @@ export class GithubClient {
     }
 
     private async gitHubFilter() {
-        const res = await this.octokit.rest.issues.listForRepo({
-            owner: this.owner,
-            repo: this.repo,
-            state: "open",
-            issue_type: "issue",
-            per_page: 100
-        });
-
-        return res.data.filter(
-            (elem) => {
+        const URL = `${this.baseURL}/search/issues?q=is:issue%20is:open%20repo:${this.owner}/${this.repo}&per_page=100`
+        const response = await fetch(URL, fetchOptions("GET", this.apiKey))
+        const res = await response.json();
+        return res.items.filter(
+            (elem: { labels: any[]; }) => {
                 let hasReadLabel = false;
 
                 elem.labels.forEach((e) => {
@@ -55,14 +51,15 @@ export class GithubClient {
         const issuesArr: Issue[] = [];
 
         return this.gitHubFilter().then(async (result) => {
-            result.map(async (e) => {
+            result.map(async (e: { body: string; title: string; number: number; labels: (string | object)[]; }) => {
                 if (typeof e.body === "string") {
                     this.logger.info(`found new issue "${e.title}" in: ${this.repo}`);
                     const entry = new Issue(e.number, e.title, e.body, this.repo, e.labels, this.owner);
 
                     issuesArr.push(entry);
 
-                    const URL = `${this.baseURL}/${repo.owner}/${repo.repo}/issues/${e.number}/labels`
+                    const URL = `${this.baseURL}/repos/${repo.owner}/${repo.repo}/issues/${e.number}/labels`
+                
                     await fetch(URL, fetchOptions("POST",this.apiKey,JSON.stringify({"labels": [readLabel]})))
                 } else {
                     this.logger.info("found issue but its body was empty", e.title);
