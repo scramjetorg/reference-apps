@@ -26,11 +26,10 @@ export class GithubClient {
     }
 
     private async gitHubFilter() {
-        const URL = `${this.baseURL}/search/issues?q=is:issue%20is:open%20repo:${this.owner}/${this.repo}`
+        const URL = `${this.baseURL}/search/issues?q=is:issue%20is:open%20repo:${this.owner}/${this.repo}&per_page=100`
         const response = await fetch(URL, fetchOptions("GET", this.apiKey))
         const res = await response.json();
-
-        return res.data.filter(
+        return res.items.filter(
             (elem: { labels: any[]; }) => {
                 let hasReadLabel = false;
 
