@@ -3,6 +3,7 @@ import { GithubClient } from "./githubClient";
 import { AppContext, ReadableApp } from "@scramjet/types";
 import * as ghSettings from "./ghdata.json";
 import { PassThrough } from "stream";
+import { defer } from "@scramjet/utility"
 
 function labelHelper(labels: any[], repo: string): Array<string> {
     return labels
@@ -20,16 +21,18 @@ const output: PassThrough & { topic: string; contentType: string } = Object.assi
 
 async function main(this:AppContext<any, any>, ghClient: GithubClient) {
     await Promise.all(ghSettings.repos.map(async (e) => ghClient.search(e))).then((reposIssues) =>
-        reposIssues.flat().forEach((issue) => {
+        reposIssues.flat().forEach(async (issue) => {
             if (issue !== undefined) {
                 this.logger.info("pushing new issue to topic", issue);
-                output.write(
-                    JSON.stringify({
-                        name: issue.title,
-                        description: issue.body,
-                        tags: labelHelper(issue.labels, issue.repo)
-                    }) + "\n"
-                );
+                const newIssue = JSON.stringify({
+                    name: issue.title,
+                    description: issue.body,
+                    tags: labelHelper(issue.labels, issue.repo)
+                }) + "\n";
+                if (!output.write(newIssue)) {
+                    await new Promise(res => output.once("drain",res));
+                }
+                await defer(100);
             }
         })
     ).catch((e) => {

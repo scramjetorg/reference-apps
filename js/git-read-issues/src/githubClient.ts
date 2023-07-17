@@ -3,6 +3,7 @@ import { Octokit } from "octokit";
 import { Issue } from "./issue";
 import { IObjectLogger } from "@scramjet/types/object-logger";
 import * as ghSettings from "./ghdata.json";
+import fetchOptions from "./fetchOptions";
 
 const readLabel = "read";
 
@@ -14,6 +15,7 @@ export class GithubClient {
     logger: IObjectLogger;
     baseURL: string = "https://api.github.com"
 
+
     constructor(apiKey: string, logger: IObjectLogger) {
         this.apiKey = apiKey;
         this.logger = logger;
@@ -21,10 +23,6 @@ export class GithubClient {
             auth: apiKey,
             log: console
         });
-    }
-    setRepo(repo: { owner:string, repo:string }) {
-        this.owner = repo.owner;
-        this.repo = repo.repo;
     }
 
     private async gitHubFilter() {
@@ -62,6 +60,7 @@ export class GithubClient {
                     issuesArr.push(entry);
 
                     const URL = `${this.baseURL}/repos/${repo.owner}/${repo.repo}/issues/${e.number}/labels`
+                
                     await fetch(URL, fetchOptions("POST",this.apiKey,JSON.stringify({"labels": [readLabel]})))
                 } else {
                     this.logger.info("found issue but its body was empty", e.title);
