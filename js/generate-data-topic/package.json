@@ -11,17 +11,16 @@
   },
   "author": "Scramjet <open-source@scramjet.org>",
   "license": "ISC",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
-    "@scramjet/types": "^0.22.0",
+    "@scramjet/types": "^0.38.0",
     "@types/node": "15.12.5"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/scramjetorg/transform-hub.git"
   },
-  "engine" :{
-  "node": ">=14.0.0"
+  "engine": {
+    "node": ">=14.0.0"
   }
 }

@@ -1,15 +1,15 @@
-import { ReadableApp } from "@scramjet/types";
+import { ReadableApp, AppContext, AppConfig } from "@scramjet/types";
 import { defer } from "@scramjet/utility";
 import { PassThrough } from "stream";
 
 const output: PassThrough & { topic: string, contentType: string } = Object.assign(
     new PassThrough({ encoding:"utf-8" }), { topic: "self-starting-data", contentType: "text/plain" }
 );
-const app: ReadableApp<string> = async function(_stream,interval:number,sequenceNumber:number=0) {
+const app: ReadableApp<string> = async function(this: AppContext<AppConfig, any>,_stream, interval:number, sequenceNumber:number=0) {
     const hub = this.hub!;
     const instanceId = this.instanceId;
     const instanceClient = hub.getInstanceClient(instanceId);
-    const seqId = await hub.getInstanceInfo(instanceId).then((res) => { return res.sequence; });
+    const seqId = await hub.getInstanceInfo(instanceId).then((res: { sequence: any; }) => { return res.sequence; });
     const seqClient = hub.getSequenceClient(seqId);
 
     await defer(interval);

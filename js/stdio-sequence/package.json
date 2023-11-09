@@ -12,14 +12,14 @@
   "author": "Scramjet <open-source@scramjet.org>",
   "license": "ISC",
   "devDependencies": {
-    "@scramjet/types": "^0.22.0",
+    "@scramjet/types": "^0.38.0",
     "@types/node": "15.12.5"
   },
   "assets": [
     "numbers.txt"
   ],
   "dependencies": {
-    "scramjet": "^4.36.6"
+    "scramjet": "^4.36.9"
   },
   "repository": {
     "type": "git",

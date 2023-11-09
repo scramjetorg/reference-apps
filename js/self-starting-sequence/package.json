@@ -12,12 +12,12 @@
   "author": "Scramjet <open-source@scramjet.org>",
   "license": "ISC",
   "dependencies": {
-    "@scramjet/utility": "^0.33.4",
     "scramjet": "^4.36.9"
   },
   "devDependencies": {
     "@types/node": "^15.12.5",
-    "@scramjet/types": "^0.33.4"
+    "@scramjet/types": "^0.38.0",
+    "@scramjet/utility": "^0.38.0"
   },
   "repository": {
     "type": "git",

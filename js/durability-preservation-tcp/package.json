@@ -20,11 +20,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@scramjet/types": "^0.22.0",
+    "@scramjet/types": "^0.38.0",
     "@types/node": "15.12.5"
   },
   "dependencies": {
-    "scramjet": "^4.36.6"
+    "scramjet": "^4.36.9"
   },
   "private": true
 }

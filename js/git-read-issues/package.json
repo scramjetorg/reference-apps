@@ -17,13 +17,13 @@
     "author": "Scramjet <open-source@scramjet.org>",
     "license": "ISC",
     "dependencies": {
-        "@scramjet/utility": "^0.34.1",
+        "@scramjet/utility": "^0.38.0",
         "octokit": "^2.0.14",
         "scramjet": "^4.36.9"
     },
     "devDependencies": {
         "@octokit/types": "^9.0.0",
-        "@scramjet/types": "^0.33.4",
+        "@scramjet/types": "^0.38.0",
         "@types/node": "^15.12.5"
     },
     "repository": {

@@ -16,7 +16,7 @@
     "scramjet": "^4.36.9"
   },
   "devDependencies": {
-    "@scramjet/types": "^0.33.5"
+    "@scramjet/types": "^0.38.0"
   },
   "repository": {
     "type": "git",
