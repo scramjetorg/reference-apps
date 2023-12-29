@@ -9,7 +9,6 @@ const mod: (TransformApp | { requires: string, contentType: string})[] = [
         const clickupClient = new ClickupClient(apiKey);
 
         const onError = (error: any) => { console.error(error); };
-        
         (input as StringStream)
             .map((data) => {
                 data = JSON.parse(data);

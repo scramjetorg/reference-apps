@@ -33,7 +33,7 @@ export class GithubClient {
             (elem: { labels: any[]; }) => {
                 let hasReadLabel = false;
                 elem.labels.forEach((e) => {
-                    if (typeof e !== "string" && "name" in e && e.name === "read" ) {
+                    if (typeof e !== "string" && "name" in e && e.name === "read") {
                         hasReadLabel = true;
                     }
                 });
