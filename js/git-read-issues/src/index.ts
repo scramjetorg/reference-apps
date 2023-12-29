@@ -20,6 +20,7 @@ const output: PassThrough & { topic: string; contentType: string } = Object.assi
 );
 
 async function main(this:AppContext<any, any>, ghClient: GithubClient) {
+    this.logger.info("Reading issues started");
     await Promise.all(ghSettings.repos.map(async (e) => ghClient.search(e))).then((reposIssues) =>
         reposIssues.flat().forEach(async (issue) => {
             if (issue !== undefined) {
@@ -27,7 +28,8 @@ async function main(this:AppContext<any, any>, ghClient: GithubClient) {
                 const newIssue = JSON.stringify({
                     name: issue.title,
                     description: issue.body,
-                    tags: labelHelper(issue.labels, issue.repo)
+                    source: issue.repo,
+                    tags: labelHelper(issue.labels, issue.repo),    
                 }) + "\n";
                 if (!output.write(newIssue)) {
                     await new Promise(res => output.once("drain",res));

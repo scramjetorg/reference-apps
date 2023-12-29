@@ -9,14 +9,14 @@ const mod: (TransformApp | { requires: string, contentType: string})[] = [
         const clickupClient = new ClickupClient(apiKey);
 
         const onError = (error: any) => { console.error(error); };
-
+        
         (input as StringStream)
             .map((data) => {
-                console.log(data);
                 data = JSON.parse(data);
                 clickupClient.sendRequest({
                     name: data.name,
                     description: data.description,
+                    source: data.source,
                     tags: data.tags
                 });
             }).catch((error: any) => {
