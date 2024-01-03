@@ -2,7 +2,7 @@
 import { request } from "https";
 import { ClientRequest } from "http";
 import * as cuSettings from "./cudata.json";
-
+import { IObjectLogger } from "@scramjet/types";
 
 type stringToValue = {
     [key: string]: string[]; 
@@ -15,25 +15,24 @@ type CuRequestType = {
     tags: Array<string>;
 }
 
-
-const tagsMap: stringToValue = {
-    "transformhub": [],
-    "cloud-platform-panel" : ["front", "panel"],
-    // Other entries can be added
-};
 export class ClickupClient {
     listId: string;
     token: string;
+    tagsMap: stringToValue;
+    logger: IObjectLogger;
 
-    constructor(token:string) {
+    constructor(token: string, config: any, logger: IObjectLogger) {
         this.listId = cuSettings.listId;
         this.token = token;
-        console.log(token);
+        this.tagsMap = config;
+        this.logger = logger; 
+        this.logger.info(`Read token ${this.token}`);
+        this.logger.info(`Read config ${JSON.stringify(config)}`);
     }
     sendRequest(issue :CuRequestType) {
         const body = JSON.stringify({
             name: issue.name,
-            tags:tagsMap[issue.source],
+            tags: this.tagsMap[issue.source] || [],
             description: issue.description, 
         });
 
@@ -49,8 +48,8 @@ export class ClickupClient {
         };
 
         const req: ClientRequest = request(options, (res) => {
-            console.log("statusCode:", res.statusCode);
-            console.log("headers:", res.headers);
+            this.logger.info(`statusCode: ${res.statusCode}`);
+            this.logger.info(`headers: ${res.headers}`);
 
             res.on("data", (d) => {
                 process.stdout.write(d);

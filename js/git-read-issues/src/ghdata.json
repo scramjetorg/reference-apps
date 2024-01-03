@@ -1,8 +1,11 @@
 {
     "repos": [
         {
+
             "owner": "owner",
+
             "repo": "repo"
+
         }
     ]
 }
