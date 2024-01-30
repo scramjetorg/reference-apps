@@ -13,10 +13,9 @@
   },
   "scripts": {
     "build:refapps": "yarn build:refapps:only",
-    "build:refapps:only": "mkdir -p dist/ && cp *.py dist/",
-    "postbuild:refapps": "yarn prepack && yarn packseq",
+    "build:refapps:only": "mkdir -p dist/__pypackages__/ && cp *.py dist/ && pip3 install -t dist/__pypackages__/ -r requirements.txt",
+    "postbuild:refapps": "yarn packseq",
     "packseq": "PACKAGES_DIR=python node ../../scripts/packsequence.js",
-    "prepack": "PACKAGES_DIR=python node ../../scripts/publish.js",
     "clean": "rm -rf ./dist"
   }
 }

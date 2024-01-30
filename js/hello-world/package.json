@@ -16,11 +16,9 @@
     "node": ">=14"
   },
   "scripts": {
-    "build:refapps": "yarn build:refapps:only",
-    "build:refapps:only": "mkdir -p dist/ && cp index.js dist/",
-    "postbuild:refapps": "yarn prepack && yarn packseq",
-    "prepack": "PACKAGES_DIR=js node ../../scripts/publish.js",
+    "build:refapps": "tsc -p tsconfig.json",
+    "postbuild:refapps": "yarn packseq",
     "packseq": "PACKAGES_DIR=js node ../../scripts/packsequence.js",
-    "clean": "rm -rf ./dist .bic_cache"
+    "clean": "rm -rf ./dist"
   }
 }
