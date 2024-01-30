@@ -1,0 +1,20 @@
+{
+  "name": "@scramjet/hello-bad",
+  "version": "0.13.1",
+  "description":"Sequence that modifies incoming stream of strings by saying Hello",
+  "main": "app.js",
+  "author": "Scramjet <open-source@scramjet.org>",
+  "license": "GPL-3.0",
+  "scripts": {
+    "build:refapps": "node ../../scripts/build-all.js",
+    "postbuild:refapps": "yarn prepack && yarn packseq",
+    "clean": "rm -rf ./dist .bic_cache",
+    "prepack": "PACKAGES_DIR=js node ../../scripts/publish.js",
+    "packseq": "PACKAGES_DIR=js node ../../scripts/packsequence.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scramjetorg/transform-hub.git"
+  },
+  "assets": ["name.txt"]
+}

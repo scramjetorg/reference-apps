@@ -1,0 +1,72 @@
+pipeline {
+  agent {
+    node {
+      label "docker"
+    }
+  }
+  environment {
+      base_path = "apps-images/sequencer"
+  }
+  stages {
+    stage("Checkout SCM") {
+      steps {
+        checkout scm
+      }
+    }
+    stage("Build Docker Image") {
+      steps {
+        script {
+          dir("${base_path}") {
+            image = docker.build("apps/sequencer")
+          }
+        }  
+      }
+    }
+    stage("Publish Docker") {
+      // Run only in master branch
+      when {
+        branch 'main'
+      }
+      steps {
+        script {
+          dir("${base_path}") {
+            def version = sh(returnStdout: true, script: "awk -F= '/^ENV SEQUENCER_VERSION/ {print \$2}' Dockerfile").trim()
+            docker.withRegistry('https://repo.int.scp.ovh', 'docker-repo') {
+              image.push("${version}")
+              image.push("latest")
+            }
+          }         
+        }
+      }
+    }
+  }
+  post {
+    always {
+      // When successed currentBuild.result is null
+      script {
+        if (currentBuild.result == null) {
+          currentBuild.result = 'SUCCESS'
+        }
+      }
+      echo "Cleaning.."
+      cleanWs()
+    }
+    // Slack Notifications syntax: https://www.jenkins.io/doc/pipeline/steps/slack/
+    unsuccessful {
+      script {
+        // CHANGE_ID is set only for pull requests
+        if (env.CHANGE_ID) {
+          slackSend (color: '#FF0000', message: "Job ${env.JOB_NAME} [${env.BUILD_NUMBER}] (${env.BUILD_URL}) failed.")
+        }
+      }
+    }
+    fixed {
+      script {
+        // CHANGE_ID is set only for pull requests
+        if (env.CHANGE_ID) {
+          slackSend (color: '#00FF00', message: "Job ${env.JOB_NAME} [${env.BUILD_NUMBER}] (${env.BUILD_URL}) back to normal.")
+        }
+      }
+    }
+  }
+}
