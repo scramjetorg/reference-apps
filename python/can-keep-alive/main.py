@@ -1,5 +1,4 @@
 import asyncio
-import inspect
 
 async def run(context, input, *args):
     if args[0] == 'SEND_KEEPALIVE':

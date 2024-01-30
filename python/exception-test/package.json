@@ -14,9 +14,8 @@
   "scripts": {
     "build:refapps": "yarn build:refapps:only",
     "build:refapps:only": "mkdir -p dist/ && cp *.py dist/",
-    "postbuild:refapps": "yarn prepack && yarn packseq",
+    "postbuild:refapps": "yarn packseq",
     "packseq": "PACKAGES_DIR=python node ../../scripts/packsequence.js",
-    "prepack": "PACKAGES_DIR=python node ../../scripts/publish.js",
     "clean": "rm -rf ./dist"
   }
 }

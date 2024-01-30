@@ -4,9 +4,8 @@
   "main": "index.js",
   "scripts": {
     "build:refapps": "node ../../scripts/build-all.js",
-    "postbuild:refapps": "yarn prepack && yarn packseq",
-    "clean": "rm -rf ./dist .bic_cache",
-    "prepack": "PACKAGES_DIR=js node ../../scripts/publish.js",
+    "postbuild:refapps": "yarn packseq",
+    "clean": "rm -rf ./dist",
     "packseq": "PACKAGES_DIR=js node ../../scripts/packsequence.js"
   },
   "engines": {
