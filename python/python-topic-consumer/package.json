@@ -1,7 +1,7 @@
 {
-  "name": "@scramjet/python-unhealthy-sequence-py",
+  "name": "@scramjet/python-topic-consumer",
   "version": "0.22.0",
-  "main": "./unhealthy.py",
+  "main": "./main.py",
   "author": "Michał Piotrowski <open-source@scramjet.org>",
   "license": "GPL-3.0",
   "repository": {

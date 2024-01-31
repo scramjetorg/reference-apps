@@ -1,8 +1,7 @@
 {
-  "name": "@scramjet/python-runner-demo-sprint-7",
+  "name": "@scramjet/python-forever",
   "version": "0.22.0",
-  "lang": "python",
-  "main": "./demo_s7.py",
+  "main": "./forever.py",
   "author": "Jan Warchoł <open-source@scramjet.org>",
   "license": "GPL-3.0",
   "repository": {
@@ -14,7 +13,7 @@
   },
   "scripts": {
     "build:refapps": "yarn build:refapps:only",
-    "build:refapps:only": "mkdir -p dist/__pypackages__/ && cp *.py dist/ && pip3 install -t dist/__pypackages__/ -r requirements.txt",
+    "build:refapps:only": "mkdir -p dist/ && cp *.py dist/",
     "postbuild:refapps": "yarn packseq",
     "packseq": "PACKAGES_DIR=python node ../../scripts/packsequence.js",
     "clean": "rm -rf ./dist"

@@ -1,9 +1,8 @@
 {
-  "name": "@scramjet/python-runner-demo-sprint-5",
+  "name": "@scramjet/python-healthy-sequence",
   "version": "0.22.0",
-  "lang": "python",
-  "main": "./demo_s5.py",
-  "author": "Jan Warchoł <open-source@scramjet.org>",
+  "main": "./main.py",
+  "author": "Michał Piotrowski <open-source@scramjet.org>",
   "license": "GPL-3.0",
   "repository": {
     "type": "git",

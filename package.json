@@ -17,8 +17,8 @@
   },
   "scripts": {
     "build": "yarn build:refapps",
-    "prebuild:refapps": "scripts/build-all.js --dirs js/* --config-name=tsconfig.json",
-    "build:refapps": "scripts/run-script.js build:refapps:only",
+    "prebuild:refapps": "scripts/run-script.js build:refapps:only",
+    "build:refapps": "scripts/build-all.js --dirs js/* --config-name=tsconfig.json",
     "postbuild:refapps": "scripts/run-script.js postbuild:refapps",
     "clean": "scripts/run-script.js clean && yarn clean:root && yarn clean:packages",
     "clean:root": "rm -rf ./dist/",
