@@ -1,8 +1,9 @@
 {
-  "name": "@scramjet/python-healthy-sequence-py",
+  "name": "@scramjet/python-runner-demo-2",
   "version": "0.22.0",
-  "main": "./main.py",
-  "author": "Michał Piotrowski <open-source@scramjet.org>",
+  "lang": "python",
+  "main": "./demo_s7.py",
+  "author": "Jan Warchoł <open-source@scramjet.org>",
   "license": "GPL-3.0",
   "repository": {
     "type": "git",

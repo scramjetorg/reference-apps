@@ -1,7 +1,8 @@
 {
-  "name": "@scramjet/python-forever-test",
+  "name": "@scramjet/python-hello",
   "version": "0.22.0",
-  "main": "./forever.py",
+  "lang": "python",
+  "main": "./hello.py",
   "author": "Jan Warchoł <open-source@scramjet.org>",
   "license": "GPL-3.0",
   "repository": {
@@ -13,7 +14,7 @@
   },
   "scripts": {
     "build:refapps": "yarn build:refapps:only",
-    "build:refapps:only": "mkdir -p dist/ && cp *.py dist/",
+    "build:refapps:only": "mkdir -p dist/__pypackages__/ && cp *.py dist/ && pip3 install -t dist/__pypackages__/ -r requirements.txt",
     "postbuild:refapps": "yarn packseq",
     "packseq": "PACKAGES_DIR=python node ../../scripts/packsequence.js",
     "clean": "rm -rf ./dist"

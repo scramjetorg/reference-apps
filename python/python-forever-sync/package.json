@@ -1,8 +1,8 @@
 {
-  "name": "@scramjet/python-topic-producer-sequence",
+  "name": "@scramjet/python-forever-sync",
   "version": "0.22.0",
-  "main": "./main.py",
-  "author": "Michał Piotrowski <open-source@scramjet.org>",
+  "main": "./forever.py",
+  "author": "Michal Piotrowski <open-source@scramjet.org>",
   "license": "GPL-3.0",
   "repository": {
     "type": "git",

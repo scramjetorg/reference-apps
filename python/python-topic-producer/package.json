@@ -1,9 +1,8 @@
 {
-  "name": "@scramjet/python-christmas-surprise",
+  "name": "@scramjet/python-topic-producer",
   "version": "0.22.0",
-  "lang": "python",
-  "main": "./christmas.py",
-  "author": "Santa <open-source@scramjet.org>",
+  "main": "./main.py",
+  "author": "Michał Piotrowski <open-source@scramjet.org>",
   "license": "GPL-3.0",
   "repository": {
     "type": "git",
@@ -14,7 +13,7 @@
   },
   "scripts": {
     "build:refapps": "yarn build:refapps:only",
-    "build:refapps:only": "mkdir -p dist/__pypackages__/ && cp *.py dist/ && pip3 install -t dist/__pypackages__/ -r requirements.txt",
+    "build:refapps:only": "mkdir -p dist/ && cp *.py dist/",
     "postbuild:refapps": "yarn packseq",
     "packseq": "PACKAGES_DIR=python node ../../scripts/packsequence.js",
     "clean": "rm -rf ./dist"
