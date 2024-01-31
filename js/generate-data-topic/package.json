@@ -4,15 +4,14 @@
   "description": "Sending 128bytes of data to topic for given duration of time ",
   "main": "index.js",
   "scripts": {
-    "build:refapps": "tsc -p tsconfig.json",
+    "build:refapps": "node ../../scripts/build-all.js",
     "postbuild:refapps": "yarn packseq",
     "packseq": "PACKAGES_DIR=js node ../../scripts/packsequence.js",
     "clean": "rm -rf ./dist"
   },
   "author": "Scramjet <open-source@scramjet.org>",
   "license": "ISC",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@scramjet/types": "^0.22.0",
     "@types/node": "15.12.5"
@@ -21,7 +20,7 @@
     "type": "git",
     "url": "https://github.com/scramjetorg/transform-hub.git"
   },
-  "engine" :{
-  "node": ">=14.0.0"
+  "engine": {
+    "node": ">=14.0.0"
   }
 }
