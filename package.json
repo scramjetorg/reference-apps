@@ -23,8 +23,7 @@
     "clean": "scripts/run-script.js clean && yarn clean:root && yarn clean:packages",
     "clean:root": "rm -rf ./dist/",
     "clean:packages": "bash -c 'rm ./{python,js}/*.tar.gz'",
-    "clean:modules": "find -name node_modules -or -name __pypackages__ -prune -exec rm -rf {} ';' 2> /dev/null",
-    "clean:tars": "rm -rf js/*.tar.gz && rm -rf python/*.tar.gz" 
+    "clean:modules": "find -name node_modules -or -name __pypackages__ -prune -exec rm -rf {} ';' 2> /dev/null"
   },
   "author": "Scramjet <open-source@scramjet.org>",
   "license": "AGPL-3.0",
