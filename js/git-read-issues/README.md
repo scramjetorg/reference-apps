@@ -47,7 +47,8 @@ npm run build:refapps
 cd ..
 //deploy a compiled package with a parameters
 //replace api key with your github api key
-si seq deploy git-read-issues.tar.gz --args '["apikey"]'
+si seq deploy git-read-issues.tar.gz --args '["apikey"]' // this runs the sequence without any tags specified
+
 ```
 
 ## Clickup-add-issues

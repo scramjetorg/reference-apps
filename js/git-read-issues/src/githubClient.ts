@@ -32,7 +32,6 @@ export class GithubClient {
         return res.items.filter(
             (elem: { labels: any[]; }) => {
                 let hasReadLabel = false;
-
                 elem.labels.forEach((e) => {
                     if (typeof e !== "string" && "name" in e && e.name === "read") {
                         hasReadLabel = true;
@@ -51,6 +50,7 @@ export class GithubClient {
         const issuesArr: Issue[] = [];
 
         return this.gitHubFilter().then(async (result) => {
+            this.logger.info(JSON.stringify(result));
             result.map(async (e: { body: string; title: string; number: number; labels: (string | object)[]; }) => {
                 if (typeof e.body === "string") {
                     this.logger.info(`found new issue "${e.title}" in: ${this.repo}`);

@@ -36,6 +36,9 @@ cd ..
 //deploy a compiled package with a parameters
 //replace api key with your clickup api key
 si seq deploy clickup-add-issues.tar.gz --args '["apikey"]'
+
+si seq deploy clickup-add-issues.tar.gz --args '["apikey"]' -f path-to-your-config.json // this runs the sequence with the tags specified in the config.json file
+//"source" in the sample config.json file defines for which repository specific tags should be set
 ```
 
 ## Git-read-issues

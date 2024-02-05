@@ -11,7 +11,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+
+      - name: Setup Node18
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18' 
+
+      - name: Install TypeScript
+        run: npm install -g typescript@5.3.2
 
       - name: Install dependencies
         run: yarn install
