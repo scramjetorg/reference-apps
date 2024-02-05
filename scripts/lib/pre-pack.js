@@ -157,9 +157,9 @@ class PrePack {
             copies.push(this.copyToDist(this.currDir, "README.md"));
         }
 
-        if (await this.isReadable(path.join(this.currDir, this.NODE_MODULES))) {
-            copies.push(this.copyToDist(this.currDir, this.NODE_MODULES));
-        }
+        // if (await this.isReadable(path.join(this.currDir, this.NODE_MODULES))) {
+        //     copies.push(this.copyToDist(this.currDir, this.NODE_MODULES));
+        // }
 
         await Promise.all(copies);
         await this.copy(this.currDirDist, this.rootDistPackPath);

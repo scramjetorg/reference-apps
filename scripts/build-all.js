@@ -157,11 +157,16 @@ console.time(BUILD_NAME);
                 throw e.cause;
             });
 
+        let seqDist = [];
+
         if (opts.distws) {
             console.timeLog(BUILD_NAME, "Done, setting up workspace...");
+
+            seqDist = prepacks.map(x => relative(outDir, x.rootDistPackPath));
+
             const contents = {
                 private: true,
-                workspaces: prepacks.map(x => relative(outDir, x.rootDistPackPath))
+                workspaces: seqDist
             };
 
             await writeFile(join(outDir, "package.json"), JSON.stringify(contents, null, 2));
@@ -170,9 +175,15 @@ console.time(BUILD_NAME);
         if (opts.install) {
             console.timeLog(BUILD_NAME, `Done, installing packages in ${outDir}...`);
 
-            const cmd = `cd ${outDir} && pwd >&2 && npx npm@8 install -q -ws --no-audit`;
+            const cmd = `cd ${outDir} && pwd >&2 && npx npm@8 install -q -ws --no-audit --workspaces=false`;
 
             await runCommand(cmd, opts.verbose);
+
+            await Promise.all(seqDist.map(s => {
+                const cmd = `cd ${outDir}/${s} && pwd >&2 && npx npm@8 install -q -ws --no-audit --workspaces=false`;
+
+                return runCommand(cmd, opts.verbose);
+            }));
         }
 
         if (opts.bundle) {
