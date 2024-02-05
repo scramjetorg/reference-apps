@@ -8,6 +8,7 @@ const { join } = require("path");
 
 class PrePack {
     LICENSE_FILENAME = "LICENSE";
+    NODE_MODULES = "node_modules";
 
     constructor(options) {
         this.logs = [];
@@ -155,6 +156,11 @@ class PrePack {
         if (await this.isReadable(path.join(this.currDir, "README.md"))) {
             copies.push(this.copyToDist(this.currDir, "README.md"));
         }
+
+        if (await this.isReadable(path.join(this.currDir, this.NODE_MODULES))) {
+            copies.push(this.copyToDist(this.currDir, this.NODE_MODULES));
+        }
+
         await Promise.all(copies);
         await this.copy(this.currDirDist, this.rootDistPackPath);
     }
@@ -175,7 +181,7 @@ class PrePack {
     }
 
     async copy(input, output) {
-        this.log(`Copy files from ${input} to ${output}`);
+        console.log(`Copy files from ${input} to ${output}`);
 
         return fse.copy(input, output, { recursive: true })
             .catch(err => {
