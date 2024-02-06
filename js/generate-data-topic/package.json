@@ -1,6 +1,6 @@
 {
   "name": "@scramjet/km-test",
-  "version": "0.25.5",
+  "version": "0.25.6",
   "description": "Sending 128bytes of data to topic for given duration of time ",
   "main": "index.js",
   "scripts": {

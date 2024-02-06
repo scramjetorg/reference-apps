@@ -1,6 +1,6 @@
 {
   "name": "@scramjet/can-keep-alive",
-  "version": "0.25.5",
+  "version": "0.25.6",
   "description": "",
   "main": "index.js",
   "scripts": {

@@ -1,6 +1,6 @@
 {
   "name": "@scramjet/ports-sequence",
-  "version": "0.25.5",
+  "version": "0.25.6",
   "description": "",
   "main": "index.js",
   "scramjet": {
