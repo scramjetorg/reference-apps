@@ -21,11 +21,11 @@ jobs:
       - name: Install TypeScript
         run: npm install -g typescript@5.3.2
 
-      - name: Run Linter
-        run: yarn lint
-
       - name: Install dependencies
         run: yarn install
+
+      - name: Run Linter
+        run: yarn lint
 
       - name: Build reference apps
         run: yarn build:refapps
