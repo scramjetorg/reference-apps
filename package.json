@@ -1,6 +1,6 @@
 {
   "name": "@scramjet/reference-apps",
-  "version": "0.22.0",
+  "version": "0.25.3",
   "private": true,
   "description": "A collection of reference applications for Scramjet platform.",
   "main": "index.js",
@@ -20,6 +20,7 @@
     "prebuild:refapps": "scripts/run-script.js build:refapps:only",
     "build:refapps": "scripts/build-all.js --dirs js/* --config-name=tsconfig.json",
     "postbuild:refapps": "scripts/run-script.js postbuild:refapps",
+    "lint": "npx eslint ./ --ext .ts --ext .js --cache --cache-strategy=content",
     "clean": "scripts/run-script.js clean && yarn clean:root && yarn clean:packages",
     "clean:root": "rm -rf ./dist/",
     "clean:packages": "bash -c 'rm ./{python,js}/*.tar.gz'",
@@ -37,7 +38,12 @@
     "glob": "^7.1.7",
     "globrex": "^0.1.2",
     "tar": "^6.1.0",
-    "typescript": "^4.3.4"
+    "typescript": "^4.3.4",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
+    "eslint": "^8.55.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-to-editorconfig": "^2.0.0"
   },
   "workspaces": {
     "packages": [
@@ -46,6 +52,7 @@
     ]
   },
   "dependencies": {
+    "scramjet": "^4.36.6",
     "minimist": "^1.2.6"
   }
 }

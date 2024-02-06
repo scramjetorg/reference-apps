@@ -1,6 +1,6 @@
 {
   "name": "@scramjet/hello-alice-out",
-  "version": "0.22.0",
+  "version": "0.25.3",
   "main": "index",
   "assets": [
     "data.json"
@@ -31,6 +31,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/scramjetorg/transform-hub.git"
+    "url": "https://github.com/scramjetorg/reference-apps.git"
   }
 }

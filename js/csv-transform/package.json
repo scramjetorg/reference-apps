@@ -1,6 +1,6 @@
 {
   "name": "@scramjet/csv-transform",
-  "version": "0.22.0",
+  "version": "0.25.3",
   "description": "This sequence performs transformation on received csv chunks",
   "main": "index.js",
   "scripts": {
@@ -17,6 +17,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/scramjetorg/transform-hub.git"
+    "url": "https://github.com/scramjetorg/reference-apps.git"
   }
 }

@@ -13,8 +13,7 @@ export class GithubClient {
     apiKey: string;
     octokit: Octokit;
     logger: IObjectLogger;
-    baseURL: string = "https://api.github.com"
-
+    baseURL: string = "https://api.github.com";
 
     constructor(apiKey: string, logger: IObjectLogger) {
         this.apiKey = apiKey;
@@ -26,12 +25,14 @@ export class GithubClient {
     }
 
     private async gitHubFilter() {
-        const URL = `${this.baseURL}/search/issues?q=is:issue%20is:open%20repo:${this.owner}/${this.repo}&per_page=100`
-        const response = await fetch(URL, fetchOptions("GET", this.apiKey))
+        const URL = `${this.baseURL}/search/issues?q=is:issue%20is:open%20repo:${this.owner}/${this.repo}&per_page=100`;
+        const response = await fetch(URL, fetchOptions("GET", this.apiKey));
         const res = await response.json();
+
         return res.items.filter(
             (elem: { labels: any[]; }) => {
                 let hasReadLabel = false;
+
                 elem.labels.forEach((e) => {
                     if (typeof e !== "string" && "name" in e && e.name === "read") {
                         hasReadLabel = true;
@@ -58,9 +59,9 @@ export class GithubClient {
 
                     issuesArr.push(entry);
 
-                    const URL = `${this.baseURL}/repos/${repo.owner}/${repo.repo}/issues/${e.number}/labels`
-                
-                    await fetch(URL, fetchOptions("POST",this.apiKey,JSON.stringify({"labels": [readLabel]})))
+                    const URL = `${this.baseURL}/repos/${repo.owner}/${repo.repo}/issues/${e.number}/labels`;
+
+                    await fetch(URL, fetchOptions("POST", this.apiKey, JSON.stringify({ labels: [readLabel] })));
                 } else {
                     this.logger.info("found issue but its body was empty", e.title);
                 }

@@ -1,6 +1,6 @@
 {
   "name": "@scramjet/js-topic-consumer",
-  "version": "0.22.0",
+  "version": "0.25.3",
   "main": "index",
   "scripts": {
     "build:refapps": "node ../../scripts/build-all.js",
@@ -27,6 +27,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/scramjetorg/transform-hub.git"
+    "url": "https://github.com/scramjetorg/reference-apps.git"
   }
 }

@@ -4,7 +4,7 @@ import { Assembly } from "./utils/assembly";
 const app: ReadableApp<any> = async function(
     _stream,
     token:string
-    ) {
+) {
     const assembly = new Assembly(token);
 
     await assembly.processFile();

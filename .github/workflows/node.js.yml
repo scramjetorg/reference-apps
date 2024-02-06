@@ -16,13 +16,16 @@ jobs:
       - name: Setup Node18
         uses: actions/setup-node@v3
         with:
-          node-version: '18' 
+          node-version: '18'
 
       - name: Install TypeScript
         run: npm install -g typescript@5.3.2
 
       - name: Install dependencies
         run: yarn install
+
+      - name: Run Linter
+        run: yarn lint
 
       - name: Build reference apps
         run: yarn build:refapps

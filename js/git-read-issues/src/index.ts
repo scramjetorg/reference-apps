@@ -3,7 +3,7 @@ import { GithubClient } from "./githubClient";
 import { AppContext, ReadableApp } from "@scramjet/types";
 import * as ghSettings from "./ghdata.json";
 import { PassThrough } from "stream";
-import { defer } from "@scramjet/utility"
+import { defer } from "@scramjet/utility";
 
 function labelHelper(labels: any[], repo: string): Array<string> {
     return labels
@@ -29,10 +29,11 @@ async function main(this:AppContext<any, any>, ghClient: GithubClient) {
                     name: issue.title,
                     description: issue.body,
                     source: issue.repo,
-                    tags: labelHelper(issue.labels, issue.repo),    
+                    tags: labelHelper(issue.labels, issue.repo),
                 }) + "\n";
+
                 if (!output.write(newIssue)) {
-                    await new Promise(res => output.once("drain",res));
+                    await new Promise(res => output.once("drain", res));
                 }
                 await defer(100);
             }

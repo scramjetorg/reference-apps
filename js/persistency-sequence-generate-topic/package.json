@@ -1,6 +1,6 @@
 {
   "name": "@scramjet/persistecy-sequence-generate-topic",
-  "version": "1.0.0",
+  "version": "0.25.3",
   "description": "sequence which generates persistance data to topic in a given time",
   "main": "index.js",
   "scripts": {
@@ -16,6 +16,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/scramjetorg/transform-hub.git"
+    "url": "https://github.com/scramjetorg/reference-apps.git"
   }
 }

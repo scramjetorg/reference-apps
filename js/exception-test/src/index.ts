@@ -4,7 +4,7 @@ class TestException extends Error {
     constructor(message: string | undefined) {
         super(message);
         this.name = "TestException";
-     }
+    }
 }
 
 const mod: ReadableApp = function() {

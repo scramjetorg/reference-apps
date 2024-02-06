@@ -1,13 +1,13 @@
 {
   "name": "@scramjet/python-stdinout",
-  "version": "0.22.0",
+  "version": "0.25.3",
   "lang": "python",
   "main": "./stdinout.py",
   "author": "Jan Warchoł <open-source@scramjet.org>",
   "license": "GPL-3.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/scramjetorg/transform-hub.git"
+    "url": "https://github.com/scramjetorg/reference-apps.git"
   },
   "engines": {
     "python3": "3.9.0"
