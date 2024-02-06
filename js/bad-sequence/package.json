@@ -1,6 +1,6 @@
 {
   "name": "@scramjet/bad-sequence",
-  "version": "0.25.6",
+  "version": "0.25.7",
   "description": "Sequence that suppose to crash and return error.",
   "main": "app.js",
   "scripts": {

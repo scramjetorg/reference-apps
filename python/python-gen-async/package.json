@@ -1,6 +1,6 @@
 {
   "name": "@scramjet/python-gen-async",
-  "version": "0.25.6",
+  "version": "0.25.7",
   "main": "./main.py",
   "author": "Michał Piotrowski <open-source@scramjet.org>",
   "license": "GPL-3.0",

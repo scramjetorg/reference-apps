@@ -1,6 +1,6 @@
 {
   "name": "@scramjet/topic-producer-sdk",
-  "version": "0.25.6",
+  "version": "0.25.7",
   "description": "Sequence that produces a topic using SDK.",
   "main": "index.js",
   "scripts": {

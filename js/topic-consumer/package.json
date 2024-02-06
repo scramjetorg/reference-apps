@@ -1,6 +1,6 @@
 {
   "name": "@scramjet/js-topic-consumer",
-  "version": "0.25.6",
+  "version": "0.25.7",
   "main": "index",
   "scripts": {
     "build:refapps": "node ../../scripts/build-all.js",
