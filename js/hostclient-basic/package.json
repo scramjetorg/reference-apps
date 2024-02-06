@@ -1,6 +1,6 @@
 {
     "name": "@scramjet/hostclient-basic",
-    "version": "0.1.0",
+    "version": "0.25.4",
     "description": "Sequence that uses some basic HostClient's methods.",
     "main": "index.js",
     "author": "Scramjet <open-source@scramjet.org>",

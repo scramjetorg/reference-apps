@@ -1,6 +1,6 @@
 {
   "name": "@scramjet/csv-transform",
-  "version": "0.25.3",
+  "version": "0.25.4",
   "description": "This sequence performs transformation on received csv chunks",
   "main": "index.js",
   "scripts": {

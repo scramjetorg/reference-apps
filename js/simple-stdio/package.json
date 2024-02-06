@@ -1,6 +1,6 @@
 {
   "name": "@scramjet/reference-simple-stdio",
-  "version": "0.25.0",
+  "version": "0.25.4",
   "description": "",
   "main": "index.js",
   "scripts": {

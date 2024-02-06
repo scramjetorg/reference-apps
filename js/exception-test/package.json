@@ -1,6 +1,6 @@
 {
   "name": "@scramjet/js-exception",
-  "version": "0.25.3",
+  "version": "0.25.4",
   "main": "index",
   "scripts": {
     "build:refapps": "node ../../scripts/build-all.js",

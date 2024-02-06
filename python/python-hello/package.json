@@ -1,6 +1,6 @@
 {
   "name": "@scramjet/python-hello",
-  "version": "0.25.3",
+  "version": "0.25.4",
   "lang": "python",
   "main": "./hello.py",
   "author": "Jan Warchoł <open-source@scramjet.org>",
