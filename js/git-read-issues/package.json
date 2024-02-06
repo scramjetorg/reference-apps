@@ -1,6 +1,6 @@
 {
     "name": "@scramjet/git-read-issues",
-    "version": "1.0.0",
+    "version": "0.25.3",
     "description": "Sequence that reads github issues and store them in a topic prepared to use in clickup-add-issues",
     "main": "index.js",
     "scripts": {
@@ -28,6 +28,6 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/scramjetorg/transform-hub.git"
+        "url": "https://github.com/scramjetorg/reference-apps.git"
     }
 }

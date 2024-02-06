@@ -8,8 +8,8 @@ const mod: (TransformApp | { requires: string, contentType: string})[] = [
     function(input: Streamable<any>, apiKey: string) {
         const config = this.config ? this.config : undefined;
         const clickupClient = new ClickupClient(apiKey, config, this.logger);
-
         const onError = (error: any) => { console.error(error); };
+
         (input as StringStream)
             .map((data) => {
                 data = JSON.parse(data);

@@ -180,9 +180,9 @@ console.time(BUILD_NAME);
             await runCommand(cmd, opts.verbose);
 
             await Promise.all(seqDist.map(s => {
-                const cmd = `cd ${outDir}/${s} && pwd >&2 && npx npm@8 install -q -ws --no-audit --workspaces=false`;
+                const cmmd = `cd ${outDir}/${s} && pwd >&2 && npx npm@8 install -q -ws --no-audit --workspaces=false`;
 
-                return runCommand(cmd, opts.verbose);
+                return runCommand(cmmd, opts.verbose);
             }));
         }
 

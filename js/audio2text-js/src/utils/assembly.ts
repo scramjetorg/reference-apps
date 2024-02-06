@@ -4,7 +4,6 @@ import { defer } from "@scramjet/utility";
 import { readFile } from "fs";
 import path from "path";
 
-
 export class Assembly {
     //path to file change song.wav to name of your file
     //file has to be in a same directory
@@ -47,6 +46,7 @@ export class Assembly {
             .then((res) => { this.transciptId = res.data.id; });
     }
     private async transcript():Promise<string> {
+        // eslint-disable-next-line no-async-promise-executor
         return new Promise(async (resolve, _reject) => {
             while (this.status !== "completed") {
                 this.client

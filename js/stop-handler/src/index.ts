@@ -7,7 +7,7 @@ const mod = async function(_stream) {
         process.stdout.write("Cleanup done.\n");
     });
 
-    await new Promise(f => setTimeout(f, 10**9));
+    await new Promise(f => setTimeout(f, 10 ** 9));
 } as InertApp;
 
 export default mod;

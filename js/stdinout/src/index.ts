@@ -13,7 +13,7 @@ const mod: ReadableApp = function(_input) {
             async (chunk: any) => {
                 process.stdout.write(chunk);
             }
-        )
+        );
 };
 
 export default mod;

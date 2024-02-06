@@ -1,6 +1,6 @@
 {
   "name": "@scramjet/args-to-output",
-  "version": "0.22.0",
+  "version": "0.25.3",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -17,6 +17,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/scramjetorg/transform-hub.git"
+    "url": "https://github.com/scramjetorg/reference-apps.git"
   }
 }

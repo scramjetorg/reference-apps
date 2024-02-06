@@ -5,14 +5,16 @@ const rht = require("./real-hrtime.node");
 
 export default [
     /**
-     * This Sequence is responsible for generating and sending timestamps as a DataStream to the to topic named "delay-test".
+     * This Sequence is responsible for generating and sending timestamps
+     * as a DataStream to the to topic named "delay-test".
      * Timestamps are generated using real-hrtime.node module
      *
      * @param {AppContext} this - Application context
      * @param {any}_stream - A dummy input stream (not used)
      * @param {number} timesOfExecution - Number of times the measurement will be executed (default: 12000)
      * @param {number} waitToStart - Number of milliseconds to wait before starting the measurement (default: 20000)
-     * @returns {DataStream} - A DataStream stream containing the generated timestamps, stream is assigned to topic "delay-test"
+     * @returns {DataStream} - A DataStream stream containing the generated timestamps,
+     * stream is assigned to topic "delay-test"
      */
     function(this: AppContext<AppConfig, any>, _stream: any, timesOfExecution = 12000, waitToStart = 20000) {
         console.log(`Testing ${timesOfExecution} samples after ${waitToStart} ms`);

@@ -5,7 +5,7 @@ import * as cuSettings from "./cudata.json";
 import { IObjectLogger } from "@scramjet/types";
 
 type stringToValue = {
-    [key: string]: string[]; 
+    [key: string]: string[];
 };
 
 type CuRequestType = {
@@ -25,7 +25,7 @@ export class ClickupClient {
         this.listId = cuSettings.listId;
         this.token = token;
         this.tagsMap = config;
-        this.logger = logger; 
+        this.logger = logger;
         this.logger.info(`Read token ${this.token}`);
         this.logger.info(`Read config ${JSON.stringify(config)}`);
     }
@@ -33,7 +33,7 @@ export class ClickupClient {
         const body = JSON.stringify({
             name: issue.name,
             tags: this.tagsMap[issue.source] || [],
-            description: issue.description, 
+            description: issue.description,
         });
 
         const options = {
@@ -58,7 +58,6 @@ export class ClickupClient {
 
         req.on("error", (e) => {
             console.error(e);
-
         });
         req.write(body);
         req.end();
