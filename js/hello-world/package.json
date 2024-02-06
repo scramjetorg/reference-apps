@@ -1,6 +1,6 @@
 {
     "name": "@scramjet/hello-world",
-    "version": "0.25.4",
+    "version": "0.25.5",
     "main": "index.js",
     "author": "a-tylenda",
     "license": "GPL-3.0",

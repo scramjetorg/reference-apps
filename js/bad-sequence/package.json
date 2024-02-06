@@ -1,7 +1,7 @@
 {
   "name": "@scramjet/bad-sequence",
-  "version": "0.25.4",
-  "description":"Sequence that suppose to crash and return error.",
+  "version": "0.25.5",
+  "description": "Sequence that suppose to crash and return error.",
   "main": "app.js",
   "scripts": {
     "build:refapps": "build:refapps:only",
