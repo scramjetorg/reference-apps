@@ -1,0 +1,6 @@
+scramjet-framework-py
+pyee
+geopy
+openmeteo-requests
+requests-cache 
+retry-requests 
