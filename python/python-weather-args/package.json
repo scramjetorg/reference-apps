@@ -1,13 +1,12 @@
 {
     "name": "@scramjet/python-weather-args",
-    "version": "0.0.1",
+    "version": "0.25.7",
     "description": "Scramjet Cloud Platform Sequence Python to display weather data from open-meteo.com",
     "author": "Karol Tylenda",
     "main": "main.py",
     "scripts": {
-        "predeploy": "mkdir -p dist/__pypackages__/ && cp *.py package.json dist/ && pip3 install -t dist/__pypackages__/ -r requirements.txt",
         "build:refapps": "yarn build:refapps:only",
-        "build:refapps:only": "mkdir -p dist/__pypackages__/ && cp *.py dist/ && pip3 install -t dist/__pypackages__/ -r requirements.txt",
+        "build:refapps:only": "mkdir -p dist/__pypackages__/ && cp *.py dist/ && cp sample-startup-config.json dist/ && pip3 install -t dist/__pypackages__/ -r requirements.txt",
         "postbuild:refapps": "yarn packseq",
         "packseq": "PACKAGES_DIR=python node ../../scripts/packsequence.js",
         "clean": "rm -rf ./dist"

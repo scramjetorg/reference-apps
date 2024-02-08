@@ -38,5 +38,3 @@ Where:
    `si seq deploy dist --args [{"cities":["Warsaw","Berlin","Boston"]}]`
 
 4. To read data from the application, use the command `si inst output <instance_id>`.
-
-Author: Karol Tylenda
