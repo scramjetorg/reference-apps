@@ -67,17 +67,3 @@ def get_meteo_data_for_city(cities, current):
         cities_data.append(city_data)
 
     return cities_data
-
-
-# {
-#     "appConfig": {
-#         "current": [
-#             "temperature_2m",
-#             "is_day",
-#             "rain",
-#             "snowfall",
-#             "wind_speed_10m"
-#         ]
-#     },
-#     "args": [{ "cities": ["Warszawa", "Berlin", "Moskwa"] }]
-# }
