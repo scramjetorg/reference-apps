@@ -1,26 +1,26 @@
 {
-  "name": "@scramjet/km-test",
-  "version": "0.25.7",
-  "description": "Sending 128bytes of data to topic for given duration of time ",
-  "main": "index.js",
-  "scripts": {
-    "build:refapps": "node ../../scripts/build-all.js",
-    "postbuild:refapps": "yarn packseq",
-    "packseq": "PACKAGES_DIR=js node ../../scripts/packsequence.js",
-    "clean": "rm -rf ./dist"
-  },
-  "author": "Scramjet <open-source@scramjet.org>",
-  "license": "ISC",
-  "dependencies": {},
-  "devDependencies": {
-    "@scramjet/types": "^0.22.0",
-    "@types/node": "15.12.5"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/scramjetorg/reference-apps.git"
-  },
-  "engine": {
-    "node": ">=14.0.0"
-  }
+    "name": "@scramjet/km-test",
+    "version": "0.25.8",
+    "description": "Sending 128bytes of data to topic for given duration of time ",
+    "main": "index.js",
+    "scripts": {
+        "build:refapps": "node ../../scripts/build-all.js",
+        "postbuild:refapps": "yarn packseq",
+        "packseq": "PACKAGES_DIR=js node ../../scripts/packsequence.js",
+        "clean": "rm -rf ./dist"
+    },
+    "author": "Scramjet <open-source@scramjet.org>",
+    "license": "ISC",
+    "dependencies": {},
+    "devDependencies": {
+        "@scramjet/types": "^0.22.0",
+        "@types/node": "15.12.5"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/scramjetorg/reference-apps.git"
+    },
+    "engine": {
+        "node": ">=14.0.0"
+    }
 }

@@ -1,21 +1,21 @@
 {
-  "name": "@scramjet/python-gen-async",
-  "version": "0.25.7",
-  "main": "./main.py",
-  "author": "Michał Piotrowski <open-source@scramjet.org>",
-  "license": "GPL-3.0",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/scramjetorg/reference-apps.git"
-  },
-  "engines": {
-    "python3": "3.9.0"
-  },
-  "scripts": {
-    "build:refapps": "yarn build:refapps:only",
-    "build:refapps:only": "mkdir -p dist/ && cp *.py dist/",
-    "postbuild:refapps": "yarn packseq",
-    "packseq": "PACKAGES_DIR=python node ../../scripts/packsequence.js",
-    "clean": "rm -rf ./dist"
-  }
+    "name": "@scramjet/python-gen-async",
+    "version": "0.25.8",
+    "main": "./main.py",
+    "author": "Michał Piotrowski <open-source@scramjet.org>",
+    "license": "GPL-3.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/scramjetorg/reference-apps.git"
+    },
+    "engines": {
+        "python3": "3.9.0"
+    },
+    "scripts": {
+        "build:refapps": "yarn build:refapps:only",
+        "build:refapps:only": "mkdir -p dist/ && cp *.py dist/",
+        "postbuild:refapps": "yarn packseq",
+        "packseq": "PACKAGES_DIR=python node ../../scripts/packsequence.js",
+        "clean": "rm -rf ./dist"
+    }
 }
