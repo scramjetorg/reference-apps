@@ -10,7 +10,7 @@ const app: ReadableApp<string> = async function(_stream, interval:number, sequen
     const instanceId = this.instanceId;
     const instanceClient = hub.getInstanceClient(instanceId);
     const seqId = await hub.getInstanceInfo(instanceId).then((res) => { return res.sequence; });
-    const seqClient = hub.getSequenceClient(seqId);
+    const seqClient = hub.getSequenceClient(seqId.toString());
 
     await defer(interval);
 
