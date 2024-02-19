@@ -1,0 +1,26 @@
+{
+    "name": "@scramjet/self-starting-sequence",
+    "version": "0.25.8",
+    "description": "Sequence thats start itself all the time",
+    "main": "index.js",
+    "scripts": {
+        "build:refapps": "node ../../scripts/build-all.js",
+        "postbuild:refapps": "yarn packseq",
+        "packseq": "PACKAGES_DIR=ts node ../../scripts/packsequence.js",
+        "clean": "rm -rf ./dist"
+    },
+    "author": "Scramjet <open-source@scramjet.org>",
+    "license": "ISC",
+    "dependencies": {
+        "@scramjet/utility": "^0.33.4",
+        "scramjet": "^4.36.9"
+    },
+    "devDependencies": {
+        "@types/node": "^15.12.5",
+        "@scramjet/types": "^0.33.4"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/scramjetorg/reference-apps.git"
+    }
+}

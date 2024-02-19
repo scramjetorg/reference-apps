@@ -23,6 +23,7 @@ jobs:
         run: >
           gh release create ${{ github.ref }}
           js/*.tar.gz
+          ts/*.tar.gz
           python/*.tar.gz
         env:
           GITHUB_TOKEN: ${{ secrets.SCRAMJET_BOT_TOKEN }}
