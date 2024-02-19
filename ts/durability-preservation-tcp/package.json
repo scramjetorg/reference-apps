@@ -1,0 +1,30 @@
+{
+    "name": "@scramjet/durability-preservation-tcp",
+    "version": "0.25.8",
+    "description": "",
+    "main": "index.ts",
+    "scripts": {
+        "build:refapps": "node ../../scripts/build-all.js",
+        "postbuild:refapps": "yarn packseq",
+        "packseq": "PACKAGES_DIR=ts node ../../scripts/packsequence.js",
+        "clean": "rm -rf ./dist"
+    },
+    "scramjet": {
+        "image": "node",
+        "config": {
+            "ports": [
+                "20000/tcp"
+            ]
+        }
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@scramjet/types": "^0.39.3",
+        "@types/node": "15.12.5"
+    },
+    "dependencies": {
+        "scramjet": "^4.36.6"
+    },
+    "private": true
+}

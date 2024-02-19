@@ -1,0 +1,33 @@
+{
+    "name": "@scramjet/git-read-issues",
+    "version": "0.25.8",
+    "description": "Sequence that reads github issues and store them in a topic prepared to use in clickup-add-issues",
+    "main": "index.js",
+    "scripts": {
+        "build:refapps": "node ../../scripts/build-all.js",
+        "postbuild:refapps": "yarn packseq",
+        "packseq": "PACKAGES_DIR=ts node ../../scripts/packsequence.js",
+        "clean": "rm -rf ./dist"
+    },
+    "keywords": [
+        "github",
+        "API",
+        "issues"
+    ],
+    "author": "Scramjet <open-source@scramjet.org>",
+    "license": "ISC",
+    "dependencies": {
+        "@scramjet/utility": "^0.39.3",
+        "octokit": "^2.0.14",
+        "scramjet": "^4.36.9"
+    },
+    "devDependencies": {
+        "@octokit/types": "^9.0.0",
+        "@scramjet/types": "^0.39.3",
+        "@types/node": "^15.12.5"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/scramjetorg/reference-apps.git"
+    }
+}

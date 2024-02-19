@@ -1,0 +1,25 @@
+{
+    "name": "@scramjet/topic-consumer-sdk",
+    "version": "0.25.8",
+    "description": "Sequence that consumes a topic using SDK.",
+    "main": "index.js",
+    "scripts": {
+        "build:refapps": "node ../../scripts/build-all.js",
+        "postbuild:refapps": "yarn packseq",
+        "packseq": "PACKAGES_DIR=ts node ../../scripts/packsequence.js",
+        "clean": "rm -rf ./dist"
+    },
+    "engines": {
+        "node": ">=14"
+    },
+    "author": "Scramjet <open-source@scramjet.org>",
+    "license": "ISC",
+    "devDependencies": {
+        "@scramjet/types": "^0.39.3",
+        "@types/node": "15.12.5"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/scramjetorg/reference-apps.git"
+    }
+}

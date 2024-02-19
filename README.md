@@ -16,7 +16,7 @@ Create your package either in `js` or `python` directory. Add all necessary file
     "scripts": {
         "build:refapps": "node ../../scripts/build-all.js",
         "postbuild:refapps": "yarn packseq",
-        "packseq": "PACKAGES_DIR=js node ../../scripts/packsequence.js",
+        "packseq": "PACKAGES_DIR=ts node ../../scripts/packsequence.js",
         "clean": "rm -rf ./dist"
     }
 ```

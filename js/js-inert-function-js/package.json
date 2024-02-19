@@ -1,0 +1,23 @@
+{
+    "name": "@scramjet/js-reference-inert-function",
+    "version": "0.25.8",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "build:refapps:only": "mkdir -p dist/ && cp index.js dist/",
+        "build:refapps": "yarn build:refapps:only",
+        "postbuild:refapps": "yarn packseq",
+        "packseq": "PACKAGES_DIR=js node ../../scripts/packsequence.js",
+        "clean": "rm -rf ./dist"
+    },
+    "author": "Scramjet <open-source@scramjet.org>",
+    "license": "ISC",
+    "devDependencies": {
+        "@scramjet/types": "^0.39.3",
+        "@types/node": "15.12.5"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/scramjetorg/reference-apps.git"
+    }
+}
