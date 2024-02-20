@@ -1,6 +1,6 @@
 {
     "name": "clickup-add-issues",
-    "version": "0.25.9",
+    "version": "0.26.0",
     "description": "",
     "main": "index.js",
     "scripts": {

@@ -1,6 +1,6 @@
 {
     "name": "@scramjet/reference-write-1-seq",
-    "version": "0.25.9",
+    "version": "0.26.0",
     "description": "",
     "main": "index.js",
     "scripts": {

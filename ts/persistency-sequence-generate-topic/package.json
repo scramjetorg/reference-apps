@@ -1,6 +1,6 @@
 {
     "name": "@scramjet/persistecy-sequence-generate-topic",
-    "version": "0.25.9",
+    "version": "0.26.0",
     "description": "sequence which generates persistance data to topic in a given time",
     "main": "index.js",
     "scripts": {

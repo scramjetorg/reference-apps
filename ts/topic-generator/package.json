@@ -1,6 +1,6 @@
 {
   "name": "@scramjet/topic-generator",
-  "version": "0.25.9",
+  "version": "0.26.0",
   "description": "Sequence that generates a data objects with incremental IDs and writes them to a topic and also to file.",
   "main": "index",
   "author": "Scramjet <open-source@scramjet.org>",
