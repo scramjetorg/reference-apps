@@ -1,6 +1,6 @@
 {
     "name": "@scramjet/self-starting-sequence",
-    "version": "0.25.8",
+    "version": "0.25.9",
     "description": "Sequence thats start itself all the time",
     "main": "index.js",
     "scripts": {

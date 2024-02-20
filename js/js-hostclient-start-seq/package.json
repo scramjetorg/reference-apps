@@ -1,6 +1,6 @@
 {
     "name": "@scramjet/js-hostclient-start-seq",
-    "version": "0.25.8",
+    "version": "0.25.9",
     "description": "Sequence that starts any other Sequence, by giving its id as an argument.",
     "main": "index.js",
     "author": "Scramjet <open-source@scramjet.org>",

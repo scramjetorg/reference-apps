@@ -1,6 +1,6 @@
 {
     "name": "@scramjet/endless-names-output",
-    "version": "0.25.8",
+    "version": "0.25.9",
     "description": "",
     "main": "index.js",
     "scripts": {

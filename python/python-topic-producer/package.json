@@ -1,6 +1,6 @@
 {
     "name": "@scramjet/python-topic-producer",
-    "version": "0.25.8",
+    "version": "0.25.9",
     "main": "./main.py",
     "author": "Michał Piotrowski <open-source@scramjet.org>",
     "license": "GPL-3.0",

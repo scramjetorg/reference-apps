@@ -1,6 +1,6 @@
 {
     "name": "@scramjet/python-exception-test",
-    "version": "0.25.8",
+    "version": "0.25.9",
     "main": "./exception.py",
     "author": "Jan Warchoł <open-source@scramjet.org>",
     "license": "GPL-3.0",

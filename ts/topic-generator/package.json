@@ -1,6 +1,6 @@
 {
   "name": "@scramjet/topic-generator",
-  "version": "0.25.8",
+  "version": "0.25.9",
   "description": "Sequence that generates a data objects with incremental IDs and writes them to a topic and also to file.",
   "main": "index",
   "author": "Scramjet <open-source@scramjet.org>",
@@ -19,7 +19,7 @@
     "@types/node": "15.12.5"
   },
   "repository": {
-      "type": "git",
-      "url": "https://github.com/scramjetorg/reference-apps.git"
+    "type": "git",
+    "url": "https://github.com/scramjetorg/reference-apps.git"
   }
 }
