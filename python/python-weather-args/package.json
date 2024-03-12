@@ -1,6 +1,6 @@
 {
     "name": "@scramjet/python-weather-args",
-    "version": "0.26.0",
+    "version": "0.26.1",
     "description": "Scramjet Cloud Platform Sequence Python to display weather data from open-meteo.com",
     "author": "Karol Tylenda",
     "main": "main.py",

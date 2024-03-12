@@ -1,6 +1,6 @@
 {
     "name": "@scramjet/topic-consumer-sdk",
-    "version": "0.26.0",
+    "version": "0.26.1",
     "description": "Sequence that consumes a topic using SDK.",
     "main": "index.js",
     "scripts": {

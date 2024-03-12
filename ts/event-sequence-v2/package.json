@@ -1,6 +1,6 @@
 {
     "name": "@scramjet/event-sequence-v2",
-    "version": "0.26.0",
+    "version": "0.26.1",
     "description": "This sequnce responds for event, wait 1 sec and exits.",
     "main": "index.js",
     "scripts": {

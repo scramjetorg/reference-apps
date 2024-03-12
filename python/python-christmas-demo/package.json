@@ -1,6 +1,6 @@
 {
     "name": "@scramjet/python-christmas-demo",
-    "version": "0.26.0",
+    "version": "0.26.1",
     "lang": "python",
     "main": "./christmas.py",
     "author": "Santa <open-source@scramjet.org>",
